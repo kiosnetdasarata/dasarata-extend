@@ -16,3 +16,31 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Route Group
+// Route::middleware('')->group(function(){
+
+    //Route Dashboard
+    Route::get('/dashboard', function () {
+        return view('hr.index');
+    })->name('dashboard');
+
+    //Route Employee
+    Route::get('/employees', function () {
+        return view('hr.employee.index');
+    })->name('employees');
+
+    Route::get('/employees/input', function () {
+        return view('hr.employee.create');
+    })->name('employees.create');
+
+    //Route Division
+    Route::get('/division', function () {
+        return view('hr.division.index');
+    })->name('division');
+
+    Route::get('/job-title', function (){
+        return view('hr.job-title.index');
+    })->name('job-title');
+
+// });
