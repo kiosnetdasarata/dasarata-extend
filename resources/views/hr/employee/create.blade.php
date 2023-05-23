@@ -130,11 +130,11 @@
         </div>
         <div class="mb-6">
             <label for="nama_instansi"  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Instansi</label>
-            <input id="nama_instansi" name="nama_instansi" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="nomor_telepon" type="text" placeholder="Nama Instansi">
+            <input id="nama_instansi" name="nama_instansi" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" type="text" placeholder="Nama Instansi">
         </div>
         <div class="mb-6">
             <label for="tahun_lulus"  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Periode</label>
-            <input id="tahun_lulus" name="tahun_lulus" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="nomor_telepon" type="text" placeholder="Periode">
+            <input id="tahun_lulus" name="tahun_lulus" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" type="text" placeholder="Periode">
         </div>
         <div class="mb-6">
             <label for="divisi"  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Divisi</label>
