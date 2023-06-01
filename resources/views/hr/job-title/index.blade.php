@@ -40,7 +40,7 @@
                     {{ $data->nama_jabatan }}
                 </td>
                 <td class="px-6 py-4 font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                    {{ $data->divisions_id}}
+                    {{ $data->divisions->nama_divisi}}
                 </td>
                 <td class="px-6 py-4 font-normal text-gray-900 whitespace-nowrap dark:text-white">
                     {{ $data->created_at }}

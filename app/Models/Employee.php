@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Division;
+
+use App\Models\JobTitle;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Employee extends Model
 {
@@ -34,5 +37,16 @@ class Employee extends Model
     //     'agama'=>'enum',
     //     'status_perkawinan'=>'enum',
     // ];
+
+    public function divisions()
+    {
+        return $this->belongsTo(Division::class, 'divisi_id');
+    }
+    public function jobtitle()
+    {
+        return $this->belongsTo(JobTitle::class, 'jabatan_id');
+    }
+
+    
 
 }
