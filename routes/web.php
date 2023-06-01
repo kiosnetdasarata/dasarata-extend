@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+
+use App\Http\Controllers\DivisionController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\JobTitleController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,21 +31,33 @@ Route::get('/', function () {
     })->name('dashboard');
 
     //Route Employee
-    Route::get('/employees', function () {
-        return view('hr.employee.index');
-    })->name('employees');
+    // Route::get('/employees', function () {
+    //     return view('hr.employee.index');
+    // })->name('employees');
 
-    Route::get('/employees/input', function () {
-        return view('hr.employee.create');
-    })->name('employees.create');
+    // Route::get('/employees/input', function () {
+    //     return view('hr.employee.create');
+    // })->name('employees.create');
 
     //Route Division
-    Route::get('/division', function () {
-        return view('hr.division.index');
-    })->name('division');
+    // Route::get('/division', function () {
+    //     return view('hr.division.index');
+    // })->name('division');
 
-    Route::get('/job-title', function (){
-        return view('hr.job-title.index');
-    })->name('job-title');
+    // Route::get('/job-title', function (){
+    //     return view('hr.job-title.index');
+    // })->name('job-title');
 
 // });
+
+// resource Employees
+Route::resource('employees', EmployeeController::class);
+
+
+// resource Division
+Route::resource('division', DivisionController::class);
+
+// resource Job
+Route::resource('job-title', JobTitleController::class);
+
+

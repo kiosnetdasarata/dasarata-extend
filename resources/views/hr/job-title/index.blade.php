@@ -31,26 +31,31 @@
             </tr>
         </thead>
         <tbody>
-            {{-- @foreach ($jabatan as $data) --}}
+            @foreach ($data as $data)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td scope="row" class="px-6 py-4 font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                    {{-- {{ $loop->itaration }} --}}
+                    {{ $loop->iteration }}
                 </td>
                 <td scope="row" class="px-6 py-4 font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                    {{-- {{ $data->nama_jabatan }} --}}
+                    {{ $data->nama_jabatan }}
                 </td>
                 <td class="px-6 py-4 font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                    {{-- {{ $data->division->nama_divisi }} --}}
+                    {{ $data->divisions_id}}
                 </td>
                 <td class="px-6 py-4 font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                    {{-- {{ $data->created_at }} --}}
+                    {{ $data->created_at }}
                 </td>
-                <td class="px-6 py-4 font-normal whitespace-nowrap dark:text-white">
+                <td class="px-6 py-4 flex font-normal whitespace-nowrap dark:text-white">
                     <a href="/hr/jabatan/update" class="mr-2 font-medium text-blue-600 dark:text-blue-500 hover:underline"><span>Edit</span></a>
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline"><span>Delete</span></a>
+                    <form action="{{ url('job-title/'.$data->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</button>
+                    </form>
+                    {{-- <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline"><span>Delete</span></a> --}}
                 </td>
             </tr>
-            {{-- @endforeach --}}
+            @endforeach
         </tbody>
     </table>
 </div>

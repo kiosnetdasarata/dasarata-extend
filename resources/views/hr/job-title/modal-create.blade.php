@@ -9,15 +9,15 @@
             <div class="px-6 py-6 lg:px-8">
               <h3 class="mb-4 text-2xl font-bold leading-none tracking-tight text-black md:text-2xl dark:text-slate-200">Input New Division</h3>
               <div class="col-lg-8 p-4 border-2 border-gray-200 border-solid rounded-lg dark:border-slate-500">
-                <form name="createJabatan" action="#" method="post">
+                <form name="createJabatan" action="{{ url('job-title') }}" method="post">
                     @csrf
                         <div class="mb-6">
                             <label for="divisi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pilih Divisi</label>
-                                <select id="divisi" name="divisi" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <select id="divisions_id" name="divisions_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                     <option selected>--Pilih Divisi--</option>
-                                    <option value="IT">IT</option>
-                                    <option value="marketing">Marketing</option>
-                                    <option value="teknisi">Teknisi</option>
+                                    @foreach ($divisions as $item)
+                                    <option value ="{{ $item->id }}">{{ $item->nama_divisi }}</option>
+                                    @endforeach
                             </select>
                         </div>
                         <div class="mb-6">

@@ -32,32 +32,39 @@
                 </tr>
             </thead>
             <tbody>
-                    {{-- @foreach ($pegawai as $data) --}}
+                    @foreach ($data as $item)
 
 
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{-- {{ $loop->iteration }} --}}
+                            {{ $loop->iteration }}
                         </td>
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{-- $data->nama --}}
+                           {{ $item->nama }}
                         </td>
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{-- $data->no_tlpn --}}
+                            {{ $item->no_tlpn }}
                         </td>
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {{-- $data->division->nama_divisi --}}
+                            {{ $item->divisi_id }}
                         </td>
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{-- $data->jobtitle->nama_jabatan --}}
+                            {{ $item->jabatan_id }}
                         </td>
-                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <a href="/hr/pegawai/update" class="mr-2 font-medium text-blue-600 dark:text-blue-500 hover:underline"><span>Edit</span></a>
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline"><span>Delete</span></a>
+                        <td class="px-6 py-4 flex font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <a href="{{ url('employees/'.$item->nip_pgwi.'/edit') }}" class="mr-2 font-medium text-blue-600 dark:text-blue-500 hover:underline"><span>Edit</span></a>
+                            <form action="{{ url('employees/'.$item->nip_pgwi) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</button>
+                            </form>
+
+                            {{-- <a href="{{ url('employees/'.$item->nip_pgwi) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline"><span>Delete</span>
+                            </a> --}}
 
                         </td>
                     </tr>
-                    {{-- @endforeach --}}
+                    @endforeach
             </tbody>
         </table>
     </div>
