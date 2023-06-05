@@ -14,4 +14,9 @@ class Commission extends Model
         'max_rentang',
         'min_rentang',
     ];
+
+    public function level()
+    {
+        return $this->belongsTo(Level::class, 'level_id');
+    }
 }

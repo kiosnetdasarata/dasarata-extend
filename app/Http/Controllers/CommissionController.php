@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Commission;
+use App\Models\Level;
 use Illuminate\Http\Request;
 
 class CommissionController extends Controller
@@ -12,8 +13,10 @@ class CommissionController extends Controller
      */
     public function index()
     {
+        $levels = Level::all();
         $data = Commission::orderBy('nominal','asc')->get();
-        return view('hr.komisi.index')->with('data', $data);
+
+        return view('hr.komisi.index',['data' => $data, 'levels' => $levels]);
     }
 
     /**
@@ -21,7 +24,7 @@ class CommissionController extends Controller
      */
     public function create()
     {
-        //
+    //    
     }
 
     /**
@@ -48,7 +51,10 @@ class CommissionController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = Commission::where('id', $id)->first();
+        $levels = Level::all();
+
+        return view('hr.komisi.update', ['data' => $data, 'levels' => $levels]);
     }
 
     /**
@@ -56,7 +62,17 @@ class CommissionController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // dd($request->all());
+        $data = [
+            'level_id'=>$request->level_id,
+            'nominal' =>$request->nominal,
+            'max_rentang' =>$request->max_rentang,
+            'min_rentang' =>$request->min_rentang
+
+        ];
+
+        Commission::where('id',$id)->update($data);
+        return redirect()->route('komisi.index');
     }
 
     /**
@@ -64,6 +80,7 @@ class CommissionController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Commission::where('id', $id)->delete();
+        return redirect()->route('komisi.index');
     }
 }

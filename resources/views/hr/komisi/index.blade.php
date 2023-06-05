@@ -39,9 +39,9 @@
                     <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {{ $loop->iteration }}
                     </td>
-                    {{-- <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {{ $data->nominal }}
-                    </td> --}}
+                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{ $data->level->nama_level }}
+                    </td>
                     <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {{ $data->nominal }}
                     </td>
@@ -51,10 +51,13 @@
                     <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {{ $data->min_rentang }}
                     </td>
-                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        <a href="/hr/komisi/update" class="mr-2 font-medium text-blue-600 dark:text-blue-500 hover:underline"><span>Edit</span></a>
-                        <button type="submit" class="badge bg-danger border-0" onclick="return confirm('Yakin Data Di Hapus?')"><span class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</span>
-
+                    <td class="px-6 py-4 flex font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <a href="{{ url('komisi/'.$data->id). '/edit' }}" class="mr-2 font-medium text-blue-600 dark:text-blue-500 hover:underline"><span>Edit</span></a>
+                        <form action="{{ url('komisi/'.$data->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach
