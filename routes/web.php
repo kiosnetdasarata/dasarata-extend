@@ -67,3 +67,8 @@ Route::get('/hr/level', function(){
 Route::get('/hr/level/update', function(){
     return view('hr.level.update');
 });
+
+//komisi
+Route::get('/hr/komisi', function(){
+    return view('hr.komisi.index');
+});
