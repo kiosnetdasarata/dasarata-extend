@@ -70,5 +70,12 @@ Route::get('/hr/level/update', function(){
     return view('hr.level.update');
 });
 
+<<<<<<< HEAD
 // route level
 Route::resource('level', LevelController::class);
+=======
+//komisi
+Route::get('/hr/komisi', function(){
+    return view('hr.komisi.index');
+});
+>>>>>>> a73e2a82cbe3b770a63baad86fda0ed09929c9c5
