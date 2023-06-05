@@ -60,4 +60,10 @@ Route::resource('division', DivisionController::class);
 // resource Job
 Route::resource('job-title', JobTitleController::class);
 
-
+//Level
+Route::get('/hr/level', function(){
+    return view('hr.level.index');
+});
+Route::get('/hr/level/update', function(){
+    return view('hr.level.update');
+});
