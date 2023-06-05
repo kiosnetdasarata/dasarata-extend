@@ -7,8 +7,8 @@
                 <span class="sr-only">Close modal</span>
             </button>
             <div class="px-6 py-6 lg:px-8">
-                <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Kategori Level</h3>
-                <form name="createKomisi" action="#" method="POST">
+                <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Kategori Komisi</h3>
+                <form name="createKomisi" action="{{ url('komisi') }}" method="POST">
                     @csrf
 
                     <div class="mb-6">

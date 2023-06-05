@@ -30,20 +30,20 @@
             </tr>
         </thead>
         <tbody>
-                {{-- @foreach ( $Commission as $data )
+                @foreach ( $data as $data )
 
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {{ $loop->iteration }}
                     </td>
                     <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        $data->nominal
+                        {{ $data->nominal }}
                     </td>
                     <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        $data->maks_rentang
+                        {{ $data->max_rentang }}
                     </td>
                     <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        $data->min_rentang
+                        {{ $data->min_rentang }}
                     </td>
                     <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         <a href="/hr/komisi/update" class="mr-2 font-medium text-blue-600 dark:text-blue-500 hover:underline"><span>Edit</span></a>
@@ -51,7 +51,7 @@
 
                     </td>
                 </tr>
-                @endforeach --}}
+                @endforeach
             </tbody>
     </table>
 </div>

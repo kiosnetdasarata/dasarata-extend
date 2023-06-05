@@ -1,13 +1,15 @@
 <?php
 
+use App\Http\Controllers\CommissionController;
 use Illuminate\Support\Facades\Route;
 
 
+use App\Http\Controllers\LevelController;
+use App\Http\Controllers\KomisiController;
 use App\Http\Controllers\DivisionController;
+
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\JobTitleController;
-
-use App\Http\Controllers\LevelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,20 +64,17 @@ Route::resource('division', DivisionController::class);
 // resource Job
 Route::resource('job-title', JobTitleController::class);
 
-//Level
-Route::get('/hr/level', function(){
-    return view('hr.level.index');
-});
-Route::get('/hr/level/update', function(){
-    return view('hr.level.update');
-});
+// //Level
+// Route::get('/hr/level', function(){
+//     return view('hr.level.index');
+// });
+// Route::get('/hr/level/update', function(){
+//     return view('hr.level.update');
+// });
 
-<<<<<<< HEAD
 // route level
 Route::resource('level', LevelController::class);
-=======
-//komisi
-Route::get('/hr/komisi', function(){
-    return view('hr.komisi.index');
-});
->>>>>>> a73e2a82cbe3b770a63baad86fda0ed09929c9c5
+
+// route komisi
+Route::resource('komisi', CommissionController::class);
+
