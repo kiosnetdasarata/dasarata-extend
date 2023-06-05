@@ -10,12 +10,24 @@
                 <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Kategori Komisi</h3>
                 <form name="createKomisi" action="{{ url('komisi') }}" method="POST">
                     @csrf
-
+                    <div class="mb-6">
+                        <label for="level_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
+                        <select id="level_id" name="level_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option selected>--Pilih Level--</option>
+                            {{-- @foreach ($levels as $level)
+                                @if (old('level_id') == $level->id)
+                                    <option value=""></option>
+                                @else
+                                <option value=""></option>
+                                @endif
+                            @endforeach --}}
+                        </select>
+                    </div>
                     <div class="mb-6">
                         <label for="nominal" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white  @error('nominal') is-invalid
                         @enderror" value="{{ old('nominal') }}">Nominal</label>
                         <input name="nominal"  class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="nominal" type="number" placeholder="Nominal">
-                    </div>
+                        <div class="mb-6">
                     <div class="mb-6">
                         <label for="max_rentang" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Maksimum Rentang</label>
                         <input name="max_rentang" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-40 @error('max_rentang') is-invalid
