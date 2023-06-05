@@ -26,36 +26,27 @@
             </tr>
         </thead>
         <tbody>
-                {{-- @foreach ($data as $item)
+                @foreach ($data as $item)
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {{ $loop->iteration }}
                     </td>
                     <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                       {{ $item->nama }}
+                       {{ $item->nama_level }}
                     </td>
                     <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {{ $item->no_tlpn }}
-                    </td>
-                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {{ $item->divisions->nama_divisi}}
-                    </td>
-                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {{ $item->jobtitle->nama_jabatan }}
+                        {{ $item->minimum_closing }}
                     </td>
                     <td class="px-6 py-4 flex font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        <a href="#" class="mr-2 font-medium text-blue-600 dark:text-blue-500 hover:underline"><span>Edit</span></a>
-                        <form action="#" method="POST">
+                        <a href="{{ url('level/'.$item->id. '/edit') }}" class="mr-2 font-medium text-blue-600 dark:text-blue-500 hover:underline"><span>Edit</span></a>
+                        <form action="{{ url('level/'.$item->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</button>
                         </form>
-                        <a href="{{ url('employees/'.$item->nip_pgwi) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline"><span>Delete</span>
-                        </a>
-
                     </td>
                 </tr>
-                @endforeach --}}
+                @endforeach
         </tbody>
     </table>
 </div>

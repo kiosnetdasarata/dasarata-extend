@@ -7,6 +7,8 @@ use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\JobTitleController;
 
+use App\Http\Controllers\LevelController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -67,3 +69,6 @@ Route::get('/hr/level', function(){
 Route::get('/hr/level/update', function(){
     return view('hr.level.update');
 });
+
+// route level
+Route::resource('level', LevelController::class);
