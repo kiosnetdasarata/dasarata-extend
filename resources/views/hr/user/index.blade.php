@@ -1,9 +1,9 @@
 @extends('layouts.hr-main')
-@section('container')
+@section('content')
 
 <div class="flex items-center">
     <h2 class="text-2xl font-bold leading-none tracking-tight text-black md:text-3xl dark:text-slate-200 ">User</h2>
-    <a data-modal-target="komisi-modal" data-modal-toggle="komisi-modal" class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 ml-auto">Tambah User</a>
+    <a href="/hr/user/input" class="ml-2 focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 ml-auto">Tambah</a>
 </div>
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -30,29 +30,29 @@
             </tr>
         </thead>
         <tbody>
-            {{-- @foreach ($datas as $data) --}}
+            @foreach ($data as $item)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{-- {{ $loop->iteration }} --}}
+                    {{ $loop->iteration }}
                 </td>
                 <td scope="row" class="px-6 py-4 font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                    {{-- {{ $data->employee->nama }} --}}
+                    {{ $item->employee->nama}}
                 </td>
                 <td class="px-6 py-4 font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                    {{-- {{ $data->karyawan_nip }} --}}
+                    {{ $item->karyawan_nip }}
                 </td>
                 <td class="px-6 py-4 font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                    {{-- {{ $data->employee->division->nama_divisi }} --}}
+                    {{ $item->divisions->nama_divisi }}
                 </td>
                 <td class="px-6 py-4 font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                    {{-- {{ $data->employee->job_title->nama_jabatan }} --}}
+                    {{ $item->employee->jobtitle->nama_jabatan }}
                 </td>
                 <td class="px-6 py-4 font-normal whitespace-nowrap dark:text-white">
                     <a href="/hr/user/update" class="mr-2 font-medium text-blue-600 dark:text-blue-500 hover:underline"><span>Edit</span></a>
                     <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline"><span>Delete</span></a>
                 </td>
             </tr>
-            {{-- @endforeach --}}
+            @endforeach
         </tbody>
     </table>
 @endsection

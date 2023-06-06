@@ -10,6 +10,7 @@ use App\Http\Controllers\DivisionController;
 
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\JobTitleController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -77,4 +78,7 @@ Route::resource('level', LevelController::class);
 
 // route komisi
 Route::resource('komisi', CommissionController::class);
+
+// route user
+Route::resource('user', UserController::class);
 
