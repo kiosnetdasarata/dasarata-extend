@@ -11,7 +11,6 @@ use App\Models\Village;
 
 use App\Models\Division;
 use App\Models\JobTitle;
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -70,9 +69,9 @@ class EmployeeController extends Controller
         // ];
 
         // Employee::create($data);
-            
-             
-        
+
+
+
 
         // $validateData = $request->validate(([
         //     'nama' => 'nama',
@@ -97,15 +96,15 @@ class EmployeeController extends Controller
         // ]));
 
         // Employee::create($validateData);
-        
+
 
 
         Employee::create($request->all());
 
         return redirect()->route('employees.index')->with('berhasil','pegawai berhasil diinput');
 
-       
-        
+
+
     }
 
     /**
@@ -120,7 +119,7 @@ class EmployeeController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
-    { 
+    {
         $provinces = Province::all();
         $regencies = Regencie::all();
         $districts = District::all();

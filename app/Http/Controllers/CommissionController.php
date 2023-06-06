@@ -15,7 +15,6 @@ class CommissionController extends Controller
     {
         $levels = Level::all();
         $data = Commission::orderBy('nominal','asc')->get();
-
         return view('hr.komisi.index',['data' => $data, 'levels' => $levels]);
     }
 
@@ -24,7 +23,7 @@ class CommissionController extends Controller
      */
     public function create()
     {
-    //    
+    //
     }
 
     /**

@@ -27,7 +27,7 @@
                     <div class="mb-6">
                         <label for="max_rentang" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Maksimum Rentang</label>
                         <input name="max_rentang" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-40 @error('max_rentang') is-invalid
-                        @enderror" value="{{ old('max_rentang') }}" id="max_rentang" type="number" placeholder="Maksimum Rentang">
+                        @enderror" value="{{ old('max_rentang') }}" id="max_rentang" type="number" placeholder="Maksimum Rentang" required>
                     </div>
                     <div class="mb-6">
                         <label for="min_rentang" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Minimum Rentang</label>
