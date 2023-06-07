@@ -3,7 +3,7 @@
 
 <div class="flex items-center">
     <h2 class="text-2xl font-bold leading-none tracking-tight text-black md:text-3xl dark:text-slate-200 ">User</h2>
-    <a href="/hr/user/input" class="ml-2 focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 ml-auto">Tambah</a>
+    <a data-modal-target="user-modal" data-modal-toggle="user-modal" class="ml-2 focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 ml-auto">Tambah</a>
 </div>
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -15,9 +15,9 @@
                 <th scope="col" class="px-6 py-3">
                     Nama
                 </th>
-                <th scope="col" class="px-6 py-3">
+                {{-- <th scope="col" class="px-6 py-3">
                     NIP
-                </th>
+                </th> --}}
                 <th scope="col" class="px-6 py-3">
                     Divisi
                 </th>
@@ -38,9 +38,9 @@
                 <td scope="row" class="px-6 py-4 font-normal text-gray-900 whitespace-nowrap dark:text-white">
                     {{ $item->employee->nama}}
                 </td>
-                <td class="px-6 py-4 font-normal text-gray-900 whitespace-nowrap dark:text-white">
+                {{-- <td class="px-6 py-4 font-normal text-gray-900 whitespace-nowrap dark:text-white">
                     {{ $item->karyawan_nip }}
-                </td>
+                </td> --}}
                 <td class="px-6 py-4 font-normal text-gray-900 whitespace-nowrap dark:text-white">
                     {{ $item->divisions->nama_divisi }}
                 </td>
@@ -55,4 +55,7 @@
             @endforeach
         </tbody>
     </table>
+</div>
+
+@include('hr.user.create')
 @endsection
