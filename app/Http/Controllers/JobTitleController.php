@@ -20,7 +20,7 @@ class JobTitleController extends Controller
         $divisions = Division::all();
         $data = JobTitle::orderBy('nama_jabatan', 'asc')->get();
 
-        return view('hr.job-title.index',['data' => $data, 'divisions' => $divisions]);
+        return view('hr.job-title.index', ['data' => $data, 'divisions' => $divisions]);
 
         // return view('hr.job-title.index')->with('divisions','data', $data, $divisions);
     }
@@ -73,7 +73,7 @@ class JobTitleController extends Controller
      */
     public function destroy(string $id)
     {
-        JobTitle::where('id',$id)->delete();
+        JobTitle::where('id', $id)->delete();
         return redirect()->route('job-title.index');
     }
 }

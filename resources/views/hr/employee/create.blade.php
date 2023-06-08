@@ -78,28 +78,28 @@
             <div class="mb-6">
                 <label for="regencies_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kota/Kabupaten</label>
                 <select id="regencie_id" name="regencie_id" class="form-select bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option value>--Pilih Kota/Kabupaten--</option>
+                    {{-- <option value>--Pilih Kota/Kabupaten--</option>
                     @foreach ($regencies as $item)
                     <option value ="{{ $item->id }}">{{ $item->name }}</option>
-                    @endforeach
+                    @endforeach --}}
                 </select>
             </div>
             <div class="mb-6">
                 <label for="districts_id"  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kecamatan</label>
                 <select id="district_id" name="district_id" class="form-select bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option selected>--Pilih Kecamatan--</option>
-                    @foreach ($districts as $item)
+                    {{-- @foreach ($districts as $item)
                     <option value ="{{ $item->id }}">{{ $item->name }}</option>
-                    @endforeach
+                    @endforeach --}}
                 </select>
             </div>
             <div class="mb-6">
                 <label for="villages_id"  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kelurahan</label>
                 <select id="village_id" name="village_id" class="form-select bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option selected>--Pilih Kelurahan--</option>
-                    @foreach ($villages as $item)
+                    {{-- @foreach ($villages as $item)
                     <option value ="{{ $item->id }}">{{ $item->name }}</option>
-                    @endforeach
+                    @endforeach --}}
                 </select>
             </div>
         </div>

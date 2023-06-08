@@ -5,12 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Division extends Model
+class Cable extends Model
 {
     use HasFactory;
-    protected $connection = 'mysql2';
-    protected $fillable = [
-        'nama_divisi',
-        'divisions_id',
-    ];
+    protected $guarded = ['id'];
+    public $timestamps = false;
 }

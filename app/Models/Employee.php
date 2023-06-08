@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Employee extends Model
 {
     use HasFactory;
+
+    protected $connection = 'mysql2';
     protected $fillable = [
         'nama',
         'no_tlpn',
@@ -47,6 +49,8 @@ class Employee extends Model
         return $this->belongsTo(JobTitle::class, 'jabatan_id');
     }
 
-    
+    public function modem(){
+        return $this->hasMany(Modem::class);
+    }
 
 }
