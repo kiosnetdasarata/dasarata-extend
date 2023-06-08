@@ -14,6 +14,7 @@ use App\Models\Modem;
 use App\Models\ModemOut;
 use App\Models\Employee;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CableController;
 
 /*
 |--------------------------------------------------------------------------
