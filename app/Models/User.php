@@ -3,10 +3,13 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Division;
+use App\Models\Employee;
+
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -18,10 +21,30 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'karyawan_nip',
+        'sales_id',
+        'jabatan_id',
         'name',
         'email',
         'password',
     ];
+
+    public function employee()
+    {
+    return $this->belongsTo(Employee::class, 'karyawan_nip', 'nip_pgwi');
+    }
+
+    public function divisions()
+    {
+        return $this->belongsTo(Division::class,'sales_id');
+    }
+    public function jobtitle()
+    {
+        return $this->belongsTo(Division::class,'jabatan_id');
+    }
+
+
+
 
     /**
      * The attributes that should be hidden for serialization.

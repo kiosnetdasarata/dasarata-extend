@@ -15,6 +15,8 @@ class JobTitle extends Model
         'divisions_id',
         'nama_jabatan',
     ];
+
+    
     public function divisions()
     {
         return $this->belongsTo(Division::class, 'divisions_id');

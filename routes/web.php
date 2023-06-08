@@ -1,11 +1,10 @@
 <?php
 
-use App\Http\Controllers\CableController;
-use App\Models\ModemType;
-
-
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LevelController;
+use App\Http\Controllers\KomisiController;
 use App\Http\Controllers\DivisionController;
+
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\JobTitleController;
 use App\Http\Controllers\ModemController;
@@ -14,6 +13,7 @@ use App\Models\Cable;
 use App\Models\Modem;
 use App\Models\ModemOut;
 use App\Models\Employee;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,6 +75,22 @@ Route::get('/warehouse', function () {
 Route::resource('modem-type', ModemTypeController::class);;
 
 Route::resource('modem-list', ModemController::class);
+// //Level
+// Route::get('/hr/level', function(){
+//     return view('hr.level.index');
+// });
+// Route::get('/hr/level/update', function(){
+//     return view('hr.level.update');
+// });
+
+// route level
+Route::resource('level', LevelController::class);
+
+// route komisi
+Route::resource('komisi', CommissionController::class);
+
+// route user
+Route::resource('user', UserController::class);
 
 Route::resource('cable', CableController::class);
 
