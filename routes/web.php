@@ -100,3 +100,6 @@ Route::get('/psb-modem', function () {
         'datas' => ModemOut::all()
     ]);
 });
+Route::post('api/fetch-regency', [EmployeeController::class, 'fetchRegency']);
+Route::post('api/fetch-district', [EmployeeController::class, 'fetchDistrict']);
+Route::post('api/fetch-village', [EmployeeController::class, 'fetchVillage']);

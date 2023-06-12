@@ -111,7 +111,6 @@
 
         });
     </script>
-
     {{-- @endpush --}}
 </body>
 </html>

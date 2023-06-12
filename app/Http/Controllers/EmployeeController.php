@@ -173,4 +173,16 @@ class EmployeeController extends Controller
         Employee::where('nip_pgwi',$id)->delete();
         return redirect()->route('employees.index');
     }
+    public function fetchRegency(Request $request){
+        $data['regencies'] = Regencie::where("province_id", $request->province_id)->get(["name", "id"]);
+        return response()->json($data);
+    }
+    public function fetchDistrict(Request $request){
+        $data['districts'] = District::where("regency_id", $request->regency_id)->get(["name", "id"]);
+        return response()->json($data);
+    }
+    public function fetchVillage(Request $request){
+            $data['villages'] = Village::where("district_id", $request->district_id)->get(["name", "id"]);
+            return response()->json($data);
+        }
 }
