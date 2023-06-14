@@ -1,20 +1,25 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LevelController;
-use App\Http\Controllers\KomisiController;
-use App\Http\Controllers\DivisionController;
-
-use App\Http\Controllers\EmployeeController;
-use App\Http\Controllers\JobTitleController;
-use App\Http\Controllers\ModemController;
-use App\Http\Controllers\ModemTypeController;
 use App\Models\Cable;
 use App\Models\Modem;
-use App\Models\ModemOut;
 use App\Models\Employee;
+use App\Models\ModemOut;
+
+use App\Models\ServicePackage;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CableController;
+use App\Http\Controllers\LevelController;
+use App\Http\Controllers\ModemController;
+use App\Http\Controllers\KomisiController;
+use App\Http\Controllers\DivisionController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\JobTitleController;
+use App\Http\Controllers\ModemTypeController;
+use App\Http\Controllers\CommissionController;
+use App\Http\Controllers\ServicePackageController;
+use App\Http\Controllers\ProgramTypeController;
+use App\Http\Controllers\ProgramController;
 
 /*
 |--------------------------------------------------------------------------
@@ -95,11 +100,21 @@ Route::resource('user', UserController::class);
 
 Route::resource('cable', CableController::class);
 
+Route::resource('service-packages', ServicePackageController::class);
+
+Route::resource('promo-type', ProgramTypeController::class);
+
+Route::resource('promo-active', ProgramController::class);
+
 Route::get('/psb-modem', function () {
     return view('warehouse.psb-modem.index', [
         'datas' => ModemOut::all()
     ]);
 });
-Route::post('api/fetch-regency', [EmployeeController::class, 'fetchRegency']);
-Route::post('api/fetch-district', [EmployeeController::class, 'fetchDistrict']);
-Route::post('api/fetch-village', [EmployeeController::class, 'fetchVillage']);
+Route::get('api/fetch-regency', [EmployeeController::class, 'fetchRegency']);
+Route::get('api/fetch-district', [EmployeeController::class, 'fetchDistrict']);
+Route::get('api/fetch-village', [EmployeeController::class, 'fetchVillage']);
+
+Route::get('/marketing', function () {
+    return view('.marketing.index');
+})->name('marketing');

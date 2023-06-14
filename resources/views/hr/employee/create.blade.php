@@ -178,7 +178,7 @@
                 $("#regencie_id").html('');
                 $.ajax({
                     url: "{{url('api/fetch-regency')}}",
-                    type: "POST",
+                    type: "GET",
                     data: {
                         province_id: idProvince,
                         _token: '{{csrf_token()}}'
@@ -199,7 +199,7 @@
                 $("#district_id").html('');
                 $.ajax({
                     url: "{{url('api/fetch-district')}}",
-                    type: "POST",
+                    type: "GET",
                     data: {
                         regency_id: idRegency,
                         _token: '{{csrf_token()}}'
@@ -220,7 +220,7 @@
                 $("#village_id").html('');
                 $.ajax({
                     url: "{{url('api/fetch-village')}}",
-                    type: "POST",
+                    type: "GET",
                     data: {
                         district_id: idDistrict,
                         _token: '{{csrf_token()}}'
