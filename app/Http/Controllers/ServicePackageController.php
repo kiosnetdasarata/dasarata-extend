@@ -10,7 +10,8 @@ class ServicePackageController extends Controller
     public function index()
     {
         return view('marketing.service-packages.index', [
-            'datas' => ServicePackage::all()
+            'datas' => ServicePackage::all(),
+            'sidebar' => "paketlayanan"
         ]);
     }
     public function store(Request $request)

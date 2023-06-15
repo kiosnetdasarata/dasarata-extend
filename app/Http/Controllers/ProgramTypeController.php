@@ -11,7 +11,8 @@ class ProgramTypeController extends Controller
     public function index()
     {
         return view('marketing.promo-type.index', [
-            'datas' => ProgramType::all()
+            'datas' => ProgramType::all(),
+            'sidebar' => 'promo'
         ]);
     }
 

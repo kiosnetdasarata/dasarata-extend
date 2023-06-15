@@ -12,7 +12,8 @@ class ProgramController extends Controller
     public function index(){
         return view('marketing.promo-active.index', [
             'datas' => Program::all(),
-            'programTypes' => ProgramType::all()
+            'programTypes' => ProgramType::all(),
+            'sidebar' => "promo"
         ]);
     }
     public function store(Request $request){

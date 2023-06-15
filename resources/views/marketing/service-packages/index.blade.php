@@ -1,4 +1,4 @@
-@extends('layouts.marketing-main');
+@extends('layouts.marketing-main')
 
 @section('content')
     @if (session()->has('success'))

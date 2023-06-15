@@ -1,4 +1,4 @@
-@extends('layouts.marketing-main');
+@extends('layouts.marketing-main')
 
 @section('content')
     @if (session()->has('success'))
@@ -105,7 +105,7 @@
                             {{ $data->tanggal_selesai }}
                         </td>
                         <td class="px-6 py-4 font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $data->tanggal_selesai > date('Y-m-d') ? "Active" : 'Inactive' }}
+                            {{ $data->tanggal_selesai > date('Y-m-d') ? 'Active' : 'Inactive' }}
                         </td>
                         <td class="px-6 py-4 flex font-normal whitespace-nowrap dark:text-white">
                             <a href="{{ url('promo-active/' . $data->id . '/edit') }}"

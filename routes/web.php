@@ -78,7 +78,7 @@ Route::get('/warehouse', function () {
     return view('warehouse.index');
 })->name('warehouse');
 
-Route::resource('modem-type', ModemTypeController::class);;
+Route::resource('modem-type', ModemTypeController::class);
 
 Route::resource('modem-list', ModemController::class);
 // //Level
@@ -116,5 +116,7 @@ Route::get('api/fetch-district', [EmployeeController::class, 'fetchDistrict']);
 Route::get('api/fetch-village', [EmployeeController::class, 'fetchVillage']);
 
 Route::get('/marketing', function () {
-    return view('.marketing.index');
+    return view('.marketing.index', [
+        'sidebar' => 'marketing'
+    ]);
 })->name('marketing');

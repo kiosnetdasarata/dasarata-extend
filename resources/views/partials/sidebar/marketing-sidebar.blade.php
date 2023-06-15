@@ -37,7 +37,7 @@
                             clip-rule="evenodd"></path>
                     </svg>
                 </button>
-                <ul id="dropdown-example" class="hidden px-5 py-2 space-y-2">
+                <ul id="dropdown-example" class="{{ $sidebar == 'promo' ? '' : 'hidden ' }}px-5 py-2 space-y-2">
                     <li>
                         <a href="{{ url('promo-type') }}"
                             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
