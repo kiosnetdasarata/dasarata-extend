@@ -20,6 +20,7 @@ use App\Http\Controllers\CommissionController;
 use App\Http\Controllers\ServicePackageController;
 use App\Http\Controllers\ProgramTypeController;
 use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\SellerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -99,6 +100,8 @@ Route::resource('komisi', CommissionController::class);
 Route::resource('user', UserController::class);
 
 Route::resource('cable', CableController::class);
+
+Route::resource('seller', SellerController::class);
 
 Route::resource('service-packages', ServicePackageController::class);
 
