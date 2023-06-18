@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Division;
 use App\Models\Employee;
+use App\Models\JobTitle;
 
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -22,8 +23,10 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'karyawan_nip',
-        'sales_id',
-        'jabatan_id',
+        'nama',
+        'division_id',
+        'job_title_id',
+        'is_leader',
         'name',
         'email',
         'password',
@@ -31,16 +34,15 @@ class User extends Authenticatable
 
     public function employee()
     {
-    return $this->belongsTo(Employee::class, 'karyawan_nip', 'nip_pgwi');
+        return $this->belongsTo(Employee::class, 'karyawan_nip','nip_pgwi');
     }
-
     public function divisions()
     {
-        return $this->belongsTo(Division::class,'sales_id');
+        return $this->belongsTo(Division::class,'division_id');
     }
     public function jobtitle()
     {
-        return $this->belongsTo(Division::class,'jabatan_id');
+        return $this->belongsTo(JobTitle::class,'job_title_id');
     }
 
 

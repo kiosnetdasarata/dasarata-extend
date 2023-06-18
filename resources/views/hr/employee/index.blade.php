@@ -50,7 +50,7 @@
                             {{ $item->divisions->nama_divisi }}
                         </td>
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $item->jobtitle->nama_jabatan }}
+                            {{ $item->jobtitle->nama_jabatan ?? '' }}
                         </td>
                         <td class="px-6 py-4 flex font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             <a href="{{ url('employees/' . $item->nip_pgwi . '/edit') }}"
