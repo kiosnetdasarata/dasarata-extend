@@ -55,30 +55,20 @@ Route::get('/', function () {
 
 // });
 
-// resource Employees
-Route::resource('employees', EmployeeController::class);
+Route::prefix('/')->group(function () {
 
+    Route::resource('employees', EmployeeController::class);
 
-// resource Division
-Route::resource('division', DivisionController::class);
+    Route::resource('division', DivisionController::class);
 
-// resource Job
-Route::resource('job-title', JobTitleController::class);
+    Route::resource('job-title', JobTitleController::class);
 
-// //Level
-// Route::get('/hr/level', function(){
-//     return view('hr.level.index');
-// });
-// Route::get('/hr/level/update', function(){
-//     return view('hr.level.update');
-// });
+    Route::resource('level', LevelController::class);
 
-// route level
-Route::resource('level', LevelController::class);
+    Route::resource('komisi', CommissionController::class);
+    
+    Route::resource('user', UserController::class);
 
-// route komisi
-Route::resource('komisi', CommissionController::class);
+});
 
-// route user
-Route::resource('user', UserController::class);
 

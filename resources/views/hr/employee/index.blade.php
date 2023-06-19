@@ -4,7 +4,7 @@
 
     <div class="flex">
         <h2 class="mb-4 text-2xl font-bold leading-none tracking-tight text-black md:text-3xl dark:text-slate-200 ">List Pegawai</h2>
-        <a href="{{ route('employees.create') }}" class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 ml-auto">Tambah Pegawai</a>
+        <a href="{{ url('/employees') }}" class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 ml-auto">Tambah Pegawai</a>
     </div>
 
     <div class="relative mt-5 overflow-x-auto shadow-md sm:rounded-lg">
@@ -46,7 +46,7 @@
                             {{ $item->no_tlpn }}
                         </td>
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $item->divisions->nama_divisi}}
+                            {{ $item->divisions->nama_divisi ?? ''}}
                         </td>
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{ $item->jobtitle->nama_jabatan ?? '' }}
