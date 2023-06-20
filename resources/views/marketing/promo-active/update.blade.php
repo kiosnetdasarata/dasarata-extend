@@ -34,32 +34,22 @@
                 @csrf
                 @method('PUT')
                 <div class="mb-6">
-                    <label for="promo_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipe
+                    <label for="program_type_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipe
                         Promo</label>
-                    <select id="promo_id" name="promo_id"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <select id="program_type_id" name="program_type_id"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('program_type_id') is-invalid
+                        @enderror">
                         @foreach ($programTypes as $programType)
                             <option value="{{ $programType->id }}" @if ($programType->id == $promoActive->program_type_id) selected @endif>
                                 {{ $programType->nama_type_program }}</option>
                         @endforeach
                     </select>
+                    @error('program_type_id')
+                        <div class="invalid-feedback text-red-600">
+                            <small>{{ $message }}</small>
+                        </div>
+                    @enderror
                 </div>
-                {{-- <div class="mb-6">
-                <label for="branch_id"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">branch_id</label>
-                <input type="text" id="branch_id" name="branch_id"
-                    class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('branch_id') is-invalid
-                @enderror"
-                    value="{{ old('branch_id') }}" placeholder="branch_id" required>
-            </div> --}}
-                {{-- <div class="mb-6">
-                <label for="verification_id"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">verification_id</label>
-                <input type="text" id="verification_id" name="verification_id"
-                    class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('verification_id') is-invalid
-                @enderror"
-                    value="{{ old('verification_id') }}" placeholder="verification_id" required>
-            </div> --}}
                 <div class="relative max-w mb-6">
                     <label for="tanggal_mulai" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal
                         Mulai</label>

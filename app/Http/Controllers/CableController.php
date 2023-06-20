@@ -16,15 +16,17 @@ class CableController extends Controller
     public function store(Request $request)
     {
         $invoiceTemporary = mt_rand(1, 3);
-        $data = [
-            'invoices_id' => $invoiceTemporary,
-            'merk_kabel' => $request->get('merk_kabel'),
-            'jenis_kabel' => $request->get('jenis_kabel'),
-            'quantity' => $request->get('kuantitas'),
-            'status_kabel' => $request->get('status_kabel')
-        ];
+        $validation = $request->validate([
+            'merk_kabel' => 'required',
+            'jenis_kabel' => 'required',
+            'quantity' => 'required|integer',
+            'status_kabel' => 'required'
+        ]);
+        $validation['invoices_id'] = $invoiceTemporary;
+        // dd($validation);
 
-        Cable::create($data);
+
+        Cable::create($validation);
         return redirect()->route('cable.index')->with('success', 'Data saved successfully');
     }
     public function destroy(string $id)
@@ -38,17 +40,21 @@ class CableController extends Controller
     {
         $cable = Cable::find($id);
         return view('warehouse.cable.update', [
-            'cable' => $cable]);
+            'cable' => $cable
+        ]);
     }
     public function update(Request $request, string $id)
     {
-        $data = [
-            'merk_kabel' => $request->get('merk_kabel'),
-            'jenis_kabel' => $request->get('jenis_kabel'),
-            'quantity' => $request->get('kuantitas'),
-            'status_kabel' => $request->get('status_kabel')
-        ];
-        Cable::where('id', $id)->update($data);
+        $invoiceTemporary = mt_rand(1, 3);
+        $validation = $request->validate([
+            'merk_kabel' => 'required',
+            'jenis_kabel' => 'required',
+            'quantity' => 'required|integer',
+            'status_kabel' => 'required'
+        ]);
+        $validation['invoices_id'] = $invoiceTemporary;
+
+        Cable::where('id', $id)->update($validation);
         return redirect()->route('cable.index')->with('success', 'Data updated successfully');
     }
 }

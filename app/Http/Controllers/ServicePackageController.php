@@ -16,12 +16,12 @@ class ServicePackageController extends Controller
     }
     public function store(Request $request)
     {
-        $data = [
-            'nama_layanan' => $request->get('nama_layanan'),
-            'harga' => $request->get('harga')
-        ];
+        $validation = $request->validate([
+            'nama_layanan' => 'required|min:3|max:100',
+            'harga' => 'required|integer'
+        ]);
 
-        ServicePackage::create($data);
+        ServicePackage::create($validation);
         return redirect()->route('service-packages.index')->with('success', 'Data saved succesfully!');
     }
 
@@ -35,17 +35,18 @@ class ServicePackageController extends Controller
     public function edit(string $id)
     {
         return view('marketing.service-packages.update', [
-            'servicePackage' => ServicePackage::find($id)
+            'servicePackage' => ServicePackage::find($id),
+            'sidebar' => 'paketlayanan'
         ]);
     }
     
     public function update(Request $request, string $id){
-        $data = [
-            'nama_layanan' => $request->get('nama_layanan'),
-            'harga' => $request->get('harga')
-        ];
+        $validation = $request->validate([
+            'nama_layanan' => 'required|min:3|max:100',
+            'harga' => 'required|integer'
+        ]);
 
-        ServicePackage::where('id', $id)->update($data);
+        ServicePackage::where('id', $id)->update($validation);
         return redirect()->route('service-packages.index')->with('success', 'Data updated succesfully!');
     }
 }

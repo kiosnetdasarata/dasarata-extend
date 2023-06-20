@@ -20,16 +20,18 @@ class ProgramController extends Controller
 
         $dateStart = Carbon::createFromFormat('m/d/Y', $request->get('tanggal_mulai'))->format('Y-m-d');
         $dateEnd = Carbon::createFromFormat('m/d/Y', $request->get('tanggal_selesai'))->format('Y-m-d');
-        $data = [
-            'program_type_id' => $request->get('promo_id'),
-            'tanggal_mulai' => $dateStart,
-            'tanggal_selesai' => $dateEnd
-        ];
+        $validation = $request->validate([
+            'program_type_id' => 'required',
+        ]);
+        $validation['tanggal_mulai'] = $dateStart;
+        $validation['tanggal_selesai'] = $dateEnd;
+
+
         if($dateEnd < date('Y-m-d')){
             return redirect()->route('promo-active.index')->with('failed', 'Promo date Expired!');
         }
         // @dd($data);
-        Program::create($data);
+        Program::create($validation);
         return redirect()->route('promo-active.index')->with('success', 'Data added succesfully!');
     }
     public function edit(string $id){
@@ -42,7 +44,8 @@ class ProgramController extends Controller
             'promoActive' => $data,
             'programTypes' => ProgramType::all(),
             'dateStart' => $dateStart,
-            'dateEnd' => $dateEnd
+            'dateEnd' => $dateEnd,
+            'sidebar' => 'promo'
         ]);
     }
     public function destroy(string $id){
@@ -53,16 +56,16 @@ class ProgramController extends Controller
 
         $dateStart = Carbon::createFromFormat('m/d/Y', $request->get('tanggal_mulai'))->format('Y-m-d');
         $dateEnd = Carbon::createFromFormat('m/d/Y', $request->get('tanggal_selesai'))->format('Y-m-d');
-        $data = [
-            'program_type_id' => $request->get('promo_id'),
-            'tanggal_mulai' => $dateStart,
-            'tanggal_selesai' => $dateEnd
-        ];
+        $validation = $request->validate([
+            'program_type_id' => 'required',
+        ]);
+        $validation['tanggal_mulai'] = $dateStart;
+        $validation['tanggal_selesai'] = $dateEnd;
         if($dateEnd < date('Y-m-d')){
             return redirect()->back()->with('failed', 'Promo date Expired!');
         }
         // @dd($data);
-        Program::where('id', $id)->update($data);
+        Program::where('id', $id)->update($validation);
         return redirect()->route('promo-active.index')->with('success', 'Data updated successfully!');
     }
 }

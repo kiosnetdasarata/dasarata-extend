@@ -15,15 +15,16 @@ class ModemController extends Controller
     {
         $date = Carbon::createFromFormat('m/d/Y', $request->get('modem_masuk'))->format('Y-m-d');
         $invoiceTemporary = mt_rand(1, 3); //invoice Sementara
-        $data = [
-            'type_id' => $request->get('type_id'),
-            'sn_modem' => $request->get('sn_modem'),
-            'karyawan_nip' => $request->get('karyawan_nip'),
-            'invoices_id' => $invoiceTemporary,
-            'modem_masuk' => $date,
-            'tujuan_out' => $request->get('tujuan_out')
-        ];
-        Modem::create($data);
+        $validation = $request->validate([
+            'type_id' => 'required',
+            'sn_modem' => 'required',
+            'karyawan_nip' => 'required',
+            'tujuan_out' => 'required'
+        ]);
+        $validation['modem_masuk'] = $date;
+        $validation['invoices_id'] = $invoiceTemporary; 
+        // dd($validation);
+        Modem::create($validation);
         return redirect()->route('modem-list.index')->with('success', 'Data berhasil disimpan');
     }
     public function index()
@@ -53,15 +54,17 @@ class ModemController extends Controller
     {
 
         $date = Carbon::createFromFormat('m/d/Y', $request->get('modem_masuk'))->format('Y-m-d');
-        $data = [
-            'type_id' => $request->get('type_id'),
-            'sn_modem' => $request->get('sn_modem'),
-            'karyawan_nip' => $request->get('karyawan_nip'),
-            'modem_masuk' => $date,
-            'tujuan_out' => $request->get('tujuan_out')
-        ];
+        $invoiceTemporary = mt_rand(1, 3); //invoice Sementara
+        $validation = $request->validate([
+            'type_id' => 'required',
+            'sn_modem' => 'required',
+            'karyawan_nip' => 'required',
+            'tujuan_out' => 'required'
+        ]);
+        $validation['modem_masuk'] = $date;
+        $validation['invoices_id'] = $invoiceTemporary; 
 
-        Modem::where('id', $id)->update($data);
+        Modem::where('id', $id)->update($validation);
         return redirect()->route('modem-list.index')->with('success', 'Data updated successfully');
     }
 

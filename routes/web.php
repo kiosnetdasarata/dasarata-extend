@@ -11,7 +11,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CableController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\ModemController;
-use App\Http\Controllers\KomisiController;
 use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\JobTitleController;
@@ -103,7 +102,11 @@ Route::resource('cable', CableController::class);
 
 Route::resource('seller', SellerController::class);
 
-Route::resource('service-packages', ServicePackageController::class);
+Route::prefix('marketing')->group(function(){
+    Route::resource('service-packages', ServicePackageController::class);
+});
+
+// Route::resource('service-packages', ServicePackageController::class);
 
 Route::resource('promo-type', ProgramTypeController::class);
 
@@ -114,9 +117,12 @@ Route::get('/psb-modem', function () {
         'datas' => ModemOut::all()
     ]);
 });
-Route::get('api/fetch-regency', [EmployeeController::class, 'fetchRegency']);
-Route::get('api/fetch-district', [EmployeeController::class, 'fetchDistrict']);
-Route::get('api/fetch-village', [EmployeeController::class, 'fetchVillage']);
+
+Route::controller(EmployeeController::class)->group(function () {
+    Route::get('fetch-regency', 'fetchRegency');
+    Route::get('fetch-district', 'fetchDistrict');
+    Route::get('fetch-village', 'fetchVillage');
+});
 
 Route::get('/marketing', function () {
     return view('.marketing.index', [

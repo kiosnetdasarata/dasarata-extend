@@ -24,16 +24,31 @@
                             <label for="merk_modem" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Merk Modem</label>
                             <input type="text" id="merk_modem" name="merk_modem" class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('merk_modem') is-invalid
                             @enderror" value="{{ old('merk_modem') }}" placeholder="Merk Modem" required>
+                            @error('merk_modem')
+                                <div class="invalid-feedback text-red-600">
+                                    <small>{{ $message }}</small>
+                                </div>
+                            @enderror
                         </div>
                         <div class="mb-6">
                             <label for="versi_modem" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Versi Modem</label>
                             <input type="text" id="versi_modem" name="versi_modem" class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('versi_modem') is-invalid
                             @enderror" value="{{ old('versi_modem') }}" placeholder="Versi Modem" required>
+                            @error('versi_modem')
+                                <div class="invalid-feedback text-red-600">
+                                    <small>{{ $message }}</small>
+                                </div>
+                            @enderror
                         </div>
                         <div class="mb-6">
                             <label for="harga_modem" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Harga Modem</label>
                             <input type="text" id="harga_modem" name="harga_modem" class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('harga_modem') is-invalid
                             @enderror" value="{{ old('harga_modem') }}" placeholder="Harga Modem" required>
+                            @error('harga_modem')
+                                <div class="invalid-feedback text-red-600">
+                                    <small>{{ $message }}</small>
+                                </div>
+                            @enderror
                         </div>
                         {{-- <div class="relative max-w mb-6">
                             <label for="created_at" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Pembuatan Jabatan</label>

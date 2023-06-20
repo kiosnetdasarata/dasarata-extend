@@ -12,7 +12,7 @@ class ModemTypeController extends Controller
         $validate = $request->validate([
             'merk_modem' => 'required',
             'versi_modem' => 'required',
-            'harga_modem' => 'required'
+            'harga_modem' => 'required|integer'
         ]);
         ModemType::create($validate);
         return redirect()->route('modem-type.index')->with('success', 'Data saved successfully');
@@ -41,13 +41,13 @@ class ModemTypeController extends Controller
 
     public function update(string $id, Request $request)
     {
-        $data = [
-          'merk_modem' => $request->get('merk_modem'),
-          'versi_modem' => $request->get('versi_modem'),
-          'harga_modem' => $request->get('harga_modem')
-        ];
+        $validate = $request->validate([
+            'merk_modem' => 'required',
+            'versi_modem' => 'required',
+            'harga_modem' => 'required|integer'
+        ]);
 
-        ModemType::where('id', $id)->update($data);
+        ModemType::where('id', $id)->update($validate);
         return redirect()->route('modem-type.index')->with('success', 'Data updated successfully');
     }
 }
