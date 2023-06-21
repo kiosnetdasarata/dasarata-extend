@@ -5,7 +5,7 @@
         <h3 class="mb-4 text-2xl font-bold leading-none tracking-tight text-black md:text-2xl dark:text-slate-200">
             Ubah Tipe Promo</h3>
         <div class="col-lg-8 p-4 border-2 border-gray-200 border-solid rounded-lg dark:border-slate-500">
-            <form name="createPromo" action="{{ url('promo-type/' . $promoType->id) }}" method="POST">
+            <form name="createPromo" action="{{ url('marketing/promo-type/'.$promoType->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="mb-6">

@@ -27,13 +27,13 @@ class CableController extends Controller
 
 
         Cable::create($validation);
-        return redirect()->route('cable.index')->with('success', 'Data saved successfully');
+        return redirect()->route('warehouse.cable.index')->with('success', 'Data saved successfully');
     }
     public function destroy(string $id)
     {
 
         Cable::destroy('id', $id);
-        return redirect()->route('cable.index')->with('success', 'Data deleted successfully');
+        return redirect()->route('warehouse.cable.index')->with('success', 'Data deleted successfully');
     }
 
     public function edit(string $id)
@@ -55,6 +55,6 @@ class CableController extends Controller
         $validation['invoices_id'] = $invoiceTemporary;
 
         Cable::where('id', $id)->update($validation);
-        return redirect()->route('cable.index')->with('success', 'Data updated successfully');
+        return redirect()->route('warehouse.cable.index')->with('success', 'Data updated successfully');
     }
 }

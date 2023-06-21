@@ -28,11 +28,11 @@ class ProgramController extends Controller
 
 
         if($dateEnd < date('Y-m-d')){
-            return redirect()->route('promo-active.index')->with('failed', 'Promo date Expired!');
+            return redirect()->route('marketing.promo-active.index')->with('failed', 'Promo date Expired!');
         }
         // @dd($data);
         Program::create($validation);
-        return redirect()->route('promo-active.index')->with('success', 'Data added succesfully!');
+        return redirect()->route('marketing.promo-active.index')->with('success', 'Data added succesfully!');
     }
     public function edit(string $id){
         
@@ -50,7 +50,7 @@ class ProgramController extends Controller
     }
     public function destroy(string $id){
         Program::destroy('id', $id);
-        return redirect()->route('promo-active.index')->with('success', 'Data added succesfully!');
+        return redirect()->route('marketing.promo-active.index')->with('success', 'Data added succesfully!');
     }
     public function update(Request $request, string $id){
 
@@ -66,6 +66,6 @@ class ProgramController extends Controller
         }
         // @dd($data);
         Program::where('id', $id)->update($validation);
-        return redirect()->route('promo-active.index')->with('success', 'Data updated successfully!');
+        return redirect()->route('marketing.promo-active.index')->with('success', 'Data updated successfully!');
     }
 }

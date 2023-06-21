@@ -71,9 +71,9 @@
                             {{ $data->harga }}
                         </td>
                         <td class="px-6 py-4 flex font-normal whitespace-nowrap dark:text-white">
-                            <a href="{{ url('marketing/service-packages/' . $data->id . '/edit') }}"
+                            <a href="{{ url('marketing/service-packages/'.$data->id.'/edit') }}"
                                 class="mr-2 font-medium text-blue-600 dark:text-blue-500 hover:underline"><span>Edit</span></a>
-                            <form name="deletePackages" action="{{ url('marketing/service-packages/' . $data->id) }}" method="POST">
+                            <form name="deletePackages" action="{{ url('marketing/service-packages/'.$data->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline"

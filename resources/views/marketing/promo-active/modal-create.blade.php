@@ -19,7 +19,7 @@
                     class="mb-4 text-2xl font-bold leading-none tracking-tight text-black md:text-2xl dark:text-slate-200">
                     Tambah Promo</h3>
                 <div class="col-lg-8 p-4 border-2 border-gray-200 border-solid rounded-lg dark:border-slate-500">
-                    <form name="createPromoActive" action="{{ url('promo-active') }}" method="POST">
+                    <form name="createPromoActive" action="{{ route('marketing.promo-active.store') }}" method="POST">
                         @csrf
                         <div class="mb-6">
                             <label for="program_type_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipe Promo</label>

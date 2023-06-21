@@ -87,9 +87,9 @@
                             {{ $data->tujuan_out }}
                         </td>
                         <td class="px-6 py-4 flex font-normal whitespace-nowrap dark:text-white">
-                            <a href="{{ 'modem-list/' . $data->id . '/edit' }}"
+                            <a href="{{ url('warehouse/modem-list/'.$data->id.'/edit') }}"
                                 class="mr-2 font-medium text-blue-600 dark:text-blue-500 hover:underline"><span>Edit</span></a>
-                            <form action="{{ url('modem-list/' . $data->id) }}" method="POST">
+                            <form action="{{ url('warehouse/modem-list/'.$data->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit"

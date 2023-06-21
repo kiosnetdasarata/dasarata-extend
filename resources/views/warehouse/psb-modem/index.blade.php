@@ -41,12 +41,10 @@
                 <td class="px-6 py-4 font-normal text-gray-900 whitespace-nowrap dark:text-white">
                     {{ $data->date_out}}
                 </td>
-                {{-- <td class="px-6 py-4 font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                    {{ $data->harga_modem }}
-                </td> --}}
+                
                 <td class="px-6 py-4 flex font-normal whitespace-nowrap dark:text-white">
-                    <a href="/hr/jabatan/update" class="mr-2 font-medium text-blue-600 dark:text-blue-500 hover:underline"><span>Edit</span></a>
-                    <form action="{{ url('job-title/'.$data->id) }}" method="POST">
+                    <a href="#" class="mr-2 font-medium text-blue-600 dark:text-blue-500 hover:underline"><span>Edit</span></a>
+                    <form action="#" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</button>

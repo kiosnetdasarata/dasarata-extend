@@ -25,7 +25,7 @@ class ModemController extends Controller
         $validation['invoices_id'] = $invoiceTemporary; 
         // dd($validation);
         Modem::create($validation);
-        return redirect()->route('modem-list.index')->with('success', 'Data berhasil disimpan');
+        return redirect()->route('warehouse.modem-list.index')->with('success', 'Data berhasil disimpan');
     }
     public function index()
     {
@@ -65,12 +65,12 @@ class ModemController extends Controller
         $validation['invoices_id'] = $invoiceTemporary; 
 
         Modem::where('id', $id)->update($validation);
-        return redirect()->route('modem-list.index')->with('success', 'Data updated successfully');
+        return redirect()->route('warehouse.modem-list.index')->with('success', 'Data updated successfully');
     }
 
     public function destroy(string $id)
     {
         Modem::destroy('id', $id);
-        return redirect()->route('modem-list.index')->with('success', 'Data berhasil dihapus');
+        return redirect()->route('warehouse.modem-list.index')->with('success', 'Data berhasil dihapus');
     }
 }

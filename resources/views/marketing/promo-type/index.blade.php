@@ -83,9 +83,9 @@
                             {{ $data->S_n_K }}
                         </td>
                         <td class="px-6 py-4 flex font-normal whitespace-nowrap dark:text-white">
-                            <a href="{{ url('promo-type/' . $data->id . '/edit') }}"
+                            <a href="{{ url('marketing/promo-type/'. $data->id . '/edit') }}"
                                 class="mr-2 font-medium text-blue-600 dark:text-blue-500 hover:underline"><span>Edit</span></a>
-                            <form name="deletePromo" action="{{ url('promo-type/' . $data->id) }}" method="POST">
+                            <form name="deletePromo" action="{{ url('marketing/promo-type/'. $data->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline"

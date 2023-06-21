@@ -9,7 +9,7 @@
             <div class="px-6 py-6 lg:px-8">
               <h3 class="mb-4 text-2xl font-bold leading-none tracking-tight text-black md:text-2xl dark:text-slate-200">Input Modem</h3>
               <div class="col-lg-8 p-4 border-2 border-gray-200 border-solid rounded-lg dark:border-slate-500">
-                <form name="createModem" action="{{ url('modem-list') }}" method="POST">
+                <form name="createModem" action="{{ route('warehouse.modem-list.store') }}" method="POST">
                     @csrf
                         <div class="mb-6">
                             <label for="type_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Versi Modem</label>

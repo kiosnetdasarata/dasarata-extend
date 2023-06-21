@@ -73,22 +73,6 @@ Route::resource('division', DivisionController::class);
 
 // resource Job
 Route::resource('job-title', JobTitleController::class);
-
-Route::get('/warehouse', function () {
-    return view('warehouse.index');
-})->name('warehouse');
-
-Route::resource('modem-type', ModemTypeController::class);
-
-Route::resource('modem-list', ModemController::class);
-// //Level
-// Route::get('/hr/level', function(){
-//     return view('hr.level.index');
-// });
-// Route::get('/hr/level/update', function(){
-//     return view('hr.level.update');
-// });
-
 // route level
 Route::resource('level', LevelController::class);
 
@@ -98,24 +82,31 @@ Route::resource('komisi', CommissionController::class);
 // route user
 Route::resource('user', UserController::class);
 
-Route::resource('cable', CableController::class);
-
-Route::resource('seller', SellerController::class);
-
-Route::prefix('marketing')->group(function(){
-    Route::resource('service-packages', ServicePackageController::class);
+Route::prefix('warehouse')->name('warehouse.')->group(function(){
+    Route::get('/', function(){
+        return view('warehouse.index');
+    })->name('warehouse');
+    Route::resource('cable', CableController::class);
+    Route::resource('seller', SellerController::class);
+    Route::resource('modem-type', ModemTypeController::class);
+    Route::resource('modem-list', ModemController::class);
+    Route::get('/psb-modem', function () {
+        return view('warehouse.psb-modem.index', [
+            'datas' => ModemOut::all()
+        ]);
+    })->name('psb-modem');
 });
 
-// Route::resource('service-packages', ServicePackageController::class);
 
-Route::resource('promo-type', ProgramTypeController::class);
-
-Route::resource('promo-active', ProgramController::class);
-
-Route::get('/psb-modem', function () {
-    return view('warehouse.psb-modem.index', [
-        'datas' => ModemOut::all()
-    ]);
+Route::prefix('marketing')->name('marketing.')->group(function(){
+    Route::get('/', function () {
+        return view('marketing.index', [
+            'sidebar' => 'marketing'
+        ]);
+    })->name('marketing');
+    Route::resource('service-packages', ServicePackageController::class);
+    Route::resource('promo-type', ProgramTypeController::class);
+    Route::resource('promo-active', ProgramController::class);
 });
 
 Route::controller(EmployeeController::class)->group(function () {
@@ -124,8 +115,4 @@ Route::controller(EmployeeController::class)->group(function () {
     Route::get('fetch-village', 'fetchVillage');
 });
 
-Route::get('/marketing', function () {
-    return view('.marketing.index', [
-        'sidebar' => 'marketing'
-    ]);
-})->name('marketing');
+

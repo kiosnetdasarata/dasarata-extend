@@ -4,7 +4,7 @@
     <div class="px-6 py-6 lg:px-8">
         <h3 class="mb-4 text-2xl font-bold leading-none tracking-tight text-black md:text-2xl dark:text-slate-200">Edit Kabel</h3>
         <div class="col-lg-8 p-4 border-2 border-gray-200 border-solid rounded-lg dark:border-slate-500">
-            <form name="createCable" action="{{ url('cable/'.$cable->id) }}" method="POST">
+            <form name="editCable" action="{{ url('warehouse/cable/'.$cable->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="mb-6">

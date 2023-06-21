@@ -12,10 +12,10 @@ class ModemTypeController extends Controller
         $validate = $request->validate([
             'merk_modem' => 'required',
             'versi_modem' => 'required',
-            'harga_modem' => 'required|integer'
+            'harga_modem' => 'required'
         ]);
         ModemType::create($validate);
-        return redirect()->route('modem-type.index')->with('success', 'Data saved successfully');
+        return redirect()->route('warehouse.modem-type.index')->with('success', 'Data saved successfully');
     }
     public function index()
     {
@@ -28,7 +28,7 @@ class ModemTypeController extends Controller
 
         // @dd($id);
         ModemType::destroy('id', $id);
-        return redirect()->route('modem-type.index')->with('success', 'Data deleted successfully');
+        return redirect()->route('warehouse.modem-type.index')->with('success', 'Data deleted successfully');
     }
 
     public function edit(string $id)
@@ -44,10 +44,10 @@ class ModemTypeController extends Controller
         $validate = $request->validate([
             'merk_modem' => 'required',
             'versi_modem' => 'required',
-            'harga_modem' => 'required|integer'
+            'harga_modem' => 'required'
         ]);
 
         ModemType::where('id', $id)->update($validate);
-        return redirect()->route('modem-type.index')->with('success', 'Data updated successfully');
+        return redirect()->route('warehouse.modem-type.index')->with('success', 'Data updated successfully');
     }
 }

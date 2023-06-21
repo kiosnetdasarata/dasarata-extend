@@ -67,8 +67,8 @@
                     {{ $data->status_kabel === 1 ? "Ready" : "Not Ready" }}
                 </td>
                 <td class="px-6 py-4 flex font-normal whitespace-nowrap dark:text-white">
-                    <a href="{{ url('cable/'.$data->id.'/edit') }}" class="mr-2 font-medium text-blue-600 dark:text-blue-500 hover:underline"><span>Edit</span></a>
-                    <form name="deleteCable" action="{{ url('cable/'.$data->id) }}" method="POST">
+                    <a href="{{ url('warehouse/cable/'.$data->id.'/edit') }}" class="mr-2 font-medium text-blue-600 dark:text-blue-500 hover:underline"><span>Edit</span></a>
+                    <form name="deleteCable" action="{{ url('warehouse/cable/'.$data->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onclick="return confirm('Are you sure?')">Delete</button>

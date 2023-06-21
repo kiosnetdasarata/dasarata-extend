@@ -18,18 +18,18 @@ class ServicePackageController extends Controller
     {
         $validation = $request->validate([
             'nama_layanan' => 'required|min:3|max:100',
-            'harga' => 'required|integer'
+            'harga' => 'required'
         ]);
 
         ServicePackage::create($validation);
-        return redirect()->route('service-packages.index')->with('success', 'Data saved succesfully!');
+        return redirect()->route('marketing.service-packages.index')->with('success', 'Data saved succesfully!');
     }
 
     public function destroy(string $id)
     {
 
         ServicePackage::destroy('id', $id);
-        return redirect()->route('service-packages.index')->with('success', 'Data deleted succesfully!');
+        return redirect()->route('marketing.service-packages.index')->with('success', 'Data deleted succesfully!');
     }
 
     public function edit(string $id)
@@ -43,10 +43,10 @@ class ServicePackageController extends Controller
     public function update(Request $request, string $id){
         $validation = $request->validate([
             'nama_layanan' => 'required|min:3|max:100',
-            'harga' => 'required|integer'
+            'harga' => 'required'
         ]);
 
         ServicePackage::where('id', $id)->update($validation);
-        return redirect()->route('service-packages.index')->with('success', 'Data updated succesfully!');
+        return redirect()->route('marketing.service-packages.index')->with('success', 'Data updated succesfully!');
     }
 }

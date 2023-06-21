@@ -5,7 +5,7 @@
         <h3 class="mb-4 text-2xl font-bold leading-none tracking-tight text-black md:text-2xl dark:text-slate-200">
             Tambah Paket Layanan</h3>
         <div class="col-lg-8 p-4 border-2 border-gray-200 border-solid rounded-lg dark:border-slate-500">
-            <form name="createPackages" action="{{ url('service-packages/' . $servicePackage->id) }}" method="POST">
+            <form name="createPackages" action="{{ url('marketing/service-packages/'.$servicePackage->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="mb-6">
