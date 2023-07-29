@@ -115,4 +115,8 @@ Route::controller(EmployeeController::class)->group(function () {
     Route::get('fetch-village', 'fetchVillage');
 });
 
+Route::get('/login', function(){
+    return view('login.index');
+});
+
 
