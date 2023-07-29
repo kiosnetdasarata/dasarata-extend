@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32">
     @vite(['resources/css/app.css','resources/js/app.js'])
     <script>
         // On page load or when changing themes, best to add inline in `head` to avoid FOUC
@@ -111,7 +112,6 @@
 
         });
     </script>
-
     {{-- @endpush --}}
 </body>
 </html>

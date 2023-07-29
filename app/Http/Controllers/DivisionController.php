@@ -29,7 +29,7 @@ class DivisionController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        @dd($request->all());
         Division::create($request->all());
 
         return redirect()->route('division.index');

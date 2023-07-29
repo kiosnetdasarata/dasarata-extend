@@ -79,27 +79,27 @@
                 <label for="regencies_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kota/Kabupaten</label>
                 <select id="regencie_id" name="regencie_id" class="form-select bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option value>--Pilih Kota/Kabupaten--</option>
-                    @foreach ($regencies as $item)
+                    {{-- @foreach ($regencies as $item)
                     <option value ="{{ $item->id }}">{{ $item->name }}</option>
-                    @endforeach
+                    @endforeach --}}
                 </select>
             </div>
             <div class="mb-6">
                 <label for="districts_id"  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kecamatan</label>
                 <select id="district_id" name="district_id" class="form-select bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option selected>--Pilih Kecamatan--</option>
-                    @foreach ($districts as $item)
+                    {{-- @foreach ($districts as $item)
                     <option value ="{{ $item->id }}">{{ $item->name }}</option>
-                    @endforeach
+                    @endforeach --}}
                 </select>
             </div>
             <div class="mb-6">
                 <label for="villages_id"  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kelurahan</label>
                 <select id="village_id" name="village_id" class="form-select bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option selected>--Pilih Kelurahan--</option>
-                    @foreach ($villages as $item)
+                    {{-- @foreach ($villages as $item)
                     <option value ="{{ $item->id }}">{{ $item->name }}</option>
-                    @endforeach
+                    @endforeach --}}
                 </select>
             </div>
         </div>
@@ -170,5 +170,71 @@
         <button type="reset" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Reset</button>
     </form>
 </div>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#province_id').on('change', function () {
+                var idProvince = this.value;
+                $("#regencie_id").html('');
+                $.ajax({
+                    url: "{{url('fetch-regency')}}",
+                    type: "GET",
+                    data: {
+                        province_id: idProvince,
+                        _token: '{{csrf_token()}}'
+                    },
+                    dataType: 'json',
+                    success: function (result) {
+                        $('#regencie_id').html('<option value="">--Pilih Kota/Kabupaten--</option>');
+                        $.each(result.regencies, function (key, value) {
+                            $("#regencie_id").append('<option value="' + value
+                                .id + '">' + value.name + '</option>');
+                        });
+                        $('#district_id').html('<option value="">--Pilih Kecamatan--</option>');
+                    }
+                });
+            });
+            $('#regencie_id').on('change', function () {
+                var idRegency = this.value;
+                $("#district_id").html('');
+                $.ajax({
+                    url: "{{url('fetch-district')}}",
+                    type: "GET",
+                    data: {
+                        regency_id: idRegency,
+                        _token: '{{csrf_token()}}'
+                    },
+                    dataType: 'json',
+                    success: function (res) {
+                        $('#district_id').html('<option value="">--Pilih Kecamatan--</option>');
+                        $.each(res.districts, function (key, value) {
+                            $("#district_id").append('<option value="' + value
+                                .id + '">' + value.name + '</option>');
+                        });
+                        $('#village_id').html('<option value="">--Pilih Kelurahan--</option>');
+                    }
+                });
+            });
+            $('#district_id').on('change', function () {
+                var idDistrict = this.value;
+                $("#village_id").html('');
+                $.ajax({
+                    url: "{{url('fetch-village')}}",
+                    type: "GET",
+                    data: {
+                        district_id: idDistrict,
+                        _token: '{{csrf_token()}}'
+                    },
+                    dataType: 'json',
+                    success: function (reslt) {
+                        $('#village_id').html('<option value="">--Pilih Kelurahan--</option>');
+                        $.each(reslt.villages, function (key, value) {
+                            $("#village_id").append('<option value="' + value
+                                .id + '">' + value.name + '</option>');
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

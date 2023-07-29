@@ -1,10 +1,14 @@
 @extends('layouts.hr-main')
 
 @section('content')
-
     <div class="flex">
-        <h2 class="mb-4 text-2xl font-bold leading-none tracking-tight text-black md:text-3xl dark:text-slate-200 ">List Pegawai</h2>
-        <a href="{{ url('/employees') }}" class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 ml-auto">Tambah Pegawai</a>
+
+        <h2 class="mb-4 text-2xl font-bold leading-none tracking-tight text-black md:text-3xl dark:text-slate-200 ">List
+            Pegawai</h2>
+        <a href="{{ route('employees.create') }}"
+            class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 ml-auto">Tambah
+            Pegawai</a>
+
     </div>
 
     <div class="relative mt-5 overflow-x-auto shadow-md sm:rounded-lg">
@@ -32,31 +36,34 @@
                 </tr>
             </thead>
             <tbody>
-                    @foreach ($data as $item)
-
-
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                @foreach ($data as $item)
+                    <tr
+                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{ $loop->iteration }}
                         </td>
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                           {{ $item->nama }}
+                            {{ $item->nama }}
                         </td>
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{ $item->no_tlpn }}
                         </td>
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $item->divisions->nama_divisi ?? ''}}
+
+                            {{ $item->divisions->nama_divisi }}
+
                         </td>
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{ $item->jobtitle->nama_jabatan ?? '' }}
                         </td>
                         <td class="px-6 py-4 flex font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <a href="{{ url('employees/'.$item->nip_pgwi.'/edit') }}" class="mr-2 font-medium text-blue-600 dark:text-blue-500 hover:underline"><span>Edit</span></a>
-                            <form action="{{ url('employees/'.$item->nip_pgwi) }}" method="POST">
+                            <a href="{{ url('employees/' . $item->nip_pgwi . '/edit') }}"
+                                class="mr-2 font-medium text-blue-600 dark:text-blue-500 hover:underline"><span>Edit</span></a>
+                            <form action="{{ url('employees/' . $item->nip_pgwi) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</button>
+                                <button type="submit"
+                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</button>
                             </form>
 
                             {{-- <a href="{{ url('employees/'.$item->nip_pgwi) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline"><span>Delete</span>
@@ -64,9 +71,8 @@
 
                         </td>
                     </tr>
-                    @endforeach
+                @endforeach
             </tbody>
         </table>
     </div>
-
 @endsection
