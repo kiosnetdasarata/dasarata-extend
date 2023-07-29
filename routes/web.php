@@ -64,23 +64,29 @@ Route::get('/dashboard', function () {
 
 // });
 
-// resource Employees
-Route::resource('employees', EmployeeController::class);
+Route::prefix('/')->group(function () {
 
+    Route::resource('employees', EmployeeController::class);
 
-// resource Division
-Route::resource('division', DivisionController::class);
+    Route::resource('division', DivisionController::class);
+
 
 // resource Job
 Route::resource('job-title', JobTitleController::class);
 // route level
 Route::resource('level', LevelController::class);
 
-// route komisi
-Route::resource('komisi', CommissionController::class);
+    Route::resource('job-title', JobTitleController::class);
 
-// route user
-Route::resource('user', UserController::class);
+    Route::resource('level', LevelController::class);
+
+    Route::resource('komisi', CommissionController::class);
+    
+    Route::resource('user', UserController::class);
+
+
+});
+
 
 Route::prefix('warehouse')->name('warehouse.')->group(function(){
     Route::get('/', function(){
