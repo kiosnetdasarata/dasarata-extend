@@ -8,15 +8,33 @@
             </button>
             <div class="px-6 py-6 lg:px-8">
                 <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Kategori Komisi</h3>
-                <form name="createKomisi" action="#" method="POST">
+                <form name="createKomisi" action="{{ url('user') }}" method="POST">
                     @csrf
                     <div class="mb-6">
-                        <label for="karyawan_nip" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
+                        <label for="karyawan_nip" class="block mb-2     text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
                         <select id="karyawan_nip" name="karyawan_nip" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option selected>--Pilih Karyawan--</option>
-                            {{-- @foreach ($levels as $item)
-                            <option value ="{{ $item->id }}">{{ $item->nama_level }}</option>
-                            @endforeach --}}
+                            @foreach ($employees as $employee)
+                                <option value ="{{ $employee->nip_pgwi }}">{{ $employee->nama }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-6">
+                        <label for="division_id" class="block mb-2     text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
+                        <select id="division_id" name="division_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option selected>--Pilih Divisons--</option>
+                            @foreach ($divisions as $item)
+                            <option value ="{{ $item->id }}">{{ $item->nama_divisi }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-6">
+                        <label for="job_title_id" class="block mb-2     text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
+                        <select id="job_title_id" name="job_title_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option selected>--Pilih Jabatan--</option>
+                            @foreach ($jobtitles as $item)
+                            <option value ="{{ $item->id }}">{{ $item->nama_jabatan }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="mb-6">

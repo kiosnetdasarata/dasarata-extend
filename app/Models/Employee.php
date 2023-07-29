@@ -50,6 +50,10 @@ class Employee extends Model
     {
         return $this->belongsTo(JobTitle::class, 'jabatan_id');
     }
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
 
     public function modem(){
         return $this->hasMany(Modem::class);
