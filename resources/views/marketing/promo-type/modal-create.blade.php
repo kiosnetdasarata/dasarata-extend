@@ -19,15 +19,20 @@
                     class="mb-4 text-2xl font-bold leading-none tracking-tight text-black md:text-2xl dark:text-slate-200">
                     Tambah Promo</h3>
                 <div class="col-lg-8 p-4 border-2 border-gray-200 border-solid rounded-lg dark:border-slate-500">
-                    <form name="createPromo" action="{{ url('promo-type') }}" method="POST">
+                    <form name="createPromo" action="{{ route('marketing.promo-type.store') }}" method="POST">
                         @csrf
                         <div class="mb-6">
-                            <label for="nama_promo"
+                            <label for="nama_type_program"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Promo</label>
-                            <input type="text" id="nama_promo" name="nama_promo"
-                                class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('nama_promo') is-invalid
+                            <input type="text" id="nama_type_program" name="nama_type_program"
+                                class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('nama_type_program') is-invalid
                             @enderror"
-                                value="{{ old('nama_promo') }}" placeholder="Nama Paket Layanan" required>
+                                value="{{ old('nama_type_program') }}" placeholder="Nama Paket Layanan" required>
+                            @error('nama_type_program')
+                                <div class="invalid-feedback text-red-600">
+                                    <small>{{ $message }}</small>
+                                </div>
+                            @enderror
                         </div>
                         <div class="mb-6">
                             <label for="nominal"
@@ -36,6 +41,11 @@
                                 class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('nominal') is-invalid
                             @enderror"
                                 value="{{ old('nominal') }}" placeholder="Nominal" required>
+                            @error('nominal')
+                                <div class="invalid-feedback text-red-600">
+                                    <small>{{ $message }}</small>
+                                </div>
+                            @enderror
                         </div>
                         <div class="relative max-w mb-6">
                             <label for="tanggal_dibuat"
@@ -49,24 +59,25 @@
                                         clip-rule="evenodd"></path>
                                 </svg>
                             </div>
-                            <input name="tanggal_dibuat" datepicker type="text" autocomplete="off"
+                            <input name="tanggal_dibuat" datepicker value="{{ old('tanggal_dibuat') }}" type="text"
+                                autocomplete="off"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 "
                                 placeholder="Pilih Tanggal">
                         </div>
-
-                        <label for="S_n_K" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Syarat dan Ketentuan</label>
-                        <textarea id="S_n_K" rows="4" name="S_n_K"
-                            class="block p-2.5 mb-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Syarat dan Ketentuan..."></textarea>
-
-                        {{-- <div class="mb-6">
-                            <label for="kuantitas"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kuantitas</label>
-                            <input type="text" id="kuantitas" name="kuantitas"
-                                class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('kuantitas') is-invalid
-                            @enderror"
-                                value="{{ old('kuantitas') }}" placeholder="Kuantitas" required>
-                        </div> --}}
+                        <div class="mb-6">
+                            <label for="S_n_K"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Syarat dan
+                                Ketentuan</label>
+                            <textarea id="S_n_K" rows="4" name="S_n_K"
+                                class="block p-2.5 mb-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('S_n_K') is-invalid
+                                @enderror"
+                                placeholder="Syarat dan Ketentuan..."></textarea>
+                            @error('S_n_K')
+                                <div class="invalid-feedback text-red-600">
+                                    <small>{{ $message }}</small>
+                                </div>
+                            @enderror
+                        </div>
                         <button type="submit"
                             class="focus:outline-none text-slate-100 bg-gray-900 hover:bg-gray-600 focus:ring-2 focus:ring-gray-400 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-900 dark:hover:bg-gray-600 dark:focus:ring-gray-800">Submit</button>
                         <button type="reset"

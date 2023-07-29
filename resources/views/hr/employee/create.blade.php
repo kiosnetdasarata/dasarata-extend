@@ -177,7 +177,7 @@
                 var idProvince = this.value;
                 $("#regencie_id").html('');
                 $.ajax({
-                    url: "{{url('api/fetch-regency')}}",
+                    url: "{{url('fetch-regency')}}",
                     type: "GET",
                     data: {
                         province_id: idProvince,
@@ -198,7 +198,7 @@
                 var idRegency = this.value;
                 $("#district_id").html('');
                 $.ajax({
-                    url: "{{url('api/fetch-district')}}",
+                    url: "{{url('fetch-district')}}",
                     type: "GET",
                     data: {
                         regency_id: idRegency,
@@ -219,7 +219,7 @@
                 var idDistrict = this.value;
                 $("#village_id").html('');
                 $.ajax({
-                    url: "{{url('api/fetch-village')}}",
+                    url: "{{url('fetch-village')}}",
                     type: "GET",
                     data: {
                         district_id: idDistrict,

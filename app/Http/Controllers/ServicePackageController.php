@@ -16,36 +16,37 @@ class ServicePackageController extends Controller
     }
     public function store(Request $request)
     {
-        $data = [
-            'nama_layanan' => $request->get('nama_layanan'),
-            'harga' => $request->get('harga')
-        ];
+        $validation = $request->validate([
+            'nama_layanan' => 'required|min:3|max:100',
+            'harga' => 'required'
+        ]);
 
-        ServicePackage::create($data);
-        return redirect()->route('service-packages.index')->with('success', 'Data saved succesfully!');
+        ServicePackage::create($validation);
+        return redirect()->route('marketing.service-packages.index')->with('success', 'Data saved succesfully!');
     }
 
     public function destroy(string $id)
     {
 
         ServicePackage::destroy('id', $id);
-        return redirect()->route('service-packages.index')->with('success', 'Data deleted succesfully!');
+        return redirect()->route('marketing.service-packages.index')->with('success', 'Data deleted succesfully!');
     }
 
     public function edit(string $id)
     {
         return view('marketing.service-packages.update', [
-            'servicePackage' => ServicePackage::find($id)
+            'servicePackage' => ServicePackage::find($id),
+            'sidebar' => 'paketlayanan'
         ]);
     }
     
     public function update(Request $request, string $id){
-        $data = [
-            'nama_layanan' => $request->get('nama_layanan'),
-            'harga' => $request->get('harga')
-        ];
+        $validation = $request->validate([
+            'nama_layanan' => 'required|min:3|max:100',
+            'harga' => 'required'
+        ]);
 
-        ServicePackage::where('id', $id)->update($data);
-        return redirect()->route('service-packages.index')->with('success', 'Data updated succesfully!');
+        ServicePackage::where('id', $id)->update($validation);
+        return redirect()->route('marketing.service-packages.index')->with('success', 'Data updated succesfully!');
     }
 }
