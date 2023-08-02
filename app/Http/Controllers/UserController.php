@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Division;
+use App\Models\JobTitle;
 use App\Models\Employee;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -13,10 +15,38 @@ class UserController extends Controller
      */
     public function index()
     {
-        
-        $data = User::with('employee','divisions','jobtitle')->orderBy('sales_id', 'asc')->get();
+        $employee = Employee::all();
+        $data = User::with( 'divisions', 'jobtitle')->orderBy('division_id', 'asc')->get();
 
-        return view('hr.user.index', ['data' => $data]);
+        return view('hr.user.index', [
+            'data' => $data,
+            'employees' => $employee,
+            'divisions' => Division::all(),
+            'jobtitles' => JobTitle::all(),
+        ]);
+
+        // $data = User::whereDoesntHave('employee')->get();
+        // return view('hr.user.index', ['data' => $data]);
+
+        
+        // $data = User::join('employees', 'users.karyawan_nip', '=', 'nip_pgwi')
+        //     ->join('divisions', 'users.division_id', '=', 'divisions.id')
+        //     ->join('job_titles', 'users.job_title_id', '=', 'job_titles.id')
+        //     ->select('users.*', 'employees.nama', 'divisions.nama_divisi as division_id', 'job_titles.nama_jabatan as job_title_id')
+        //     ->get();
+
+        // return view('hr.user.index', ['data' => $data]);
+
+
+
+        // $existingUserIds = User::pluck('karyawan_nip')->toArray();
+
+        // $data = employee::whereNotIn('id', $existingUserIds)
+        // ->with('divisions', 'jobtitle')
+        // ->orderBy('division_id', 'asc')
+        // ->get();
+
+        // return view('hr.user.index', ['data' => $data]);
     }
 
     /**
@@ -32,7 +62,21 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+        $data = $request->all();
+        
+        $hashedPassword = bcrypt($data['password']);
+        $data = [
+            'karyawan_nip' => $request->get('karyawan_nip'),
+            'password' => $hashedPassword,
+            'division_id' => $request->division_id,
+            'job_title_id' => $request->job_title_id,
+            'is_leader' => 1,
+        ];
+        // dd($data);
+        User::create($data);
+
+        return redirect()->route('user.index');
     }
 
     /**
@@ -64,6 +108,7 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        User::where('id', $id)->delete();
+        return redirect()->route('user.index');
     }
 }
