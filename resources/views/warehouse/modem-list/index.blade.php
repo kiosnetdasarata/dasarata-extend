@@ -36,7 +36,7 @@
         {{-- <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="text-gray-700 bg-gray-200 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white dark:bg-gray-900 dark:hover:bg-gray-600 dark:focus:ring-gray-800" type="button">
             Input Modem
         </button> --}}
-        <a href="{{ route('warehouse.modem-list.create') }}" class=" bg-gray-900 text-white rounded-lg p-2">Input Modem</a>
+        <a href="{{ route('warehouse.modem-list.create') }}" class="text-gray-700 bg-gray-200 hover:bg-gray-300 dark:bg-gray-900 dark:text-white rounded-lg p-2">Input Modem</a>
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">

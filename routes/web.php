@@ -16,6 +16,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\JobTitleController;
 use App\Http\Controllers\ModemTypeController;
 use App\Http\Controllers\CommissionController;
+use App\Http\Controllers\PoleController;
 use App\Http\Controllers\ServicePackageController;
 use App\Http\Controllers\ProgramTypeController;
 use App\Http\Controllers\ProgramController;
@@ -96,6 +97,7 @@ Route::prefix('warehouse')->name('warehouse.')->group(function(){
     Route::resource('seller', SellerController::class);
     Route::resource('modem-type', ModemTypeController::class);
     Route::resource('modem-list', ModemController::class);
+    Route::resource('pole', PoleController::class);
     Route::get('/psb-modem', function () {
         return view('warehouse.psb-modem.index', [
             'datas' => ModemOut::all()
@@ -124,5 +126,4 @@ Route::controller(EmployeeController::class)->group(function () {
 Route::get('/login', function(){
     return view('login.index');
 });
-
 
