@@ -14,39 +14,9 @@ class UserController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $employee = Employee::all();
-        $data = User::with( 'divisions', 'jobtitle')->orderBy('division_id', 'asc')->get();
-
-        return view('hr.user.index', [
-            'data' => $data,
-            'employees' => $employee,
-            'divisions' => Division::all(),
-            'jobtitles' => JobTitle::all(),
-        ]);
-
-        // $data = User::whereDoesntHave('employee')->get();
-        // return view('hr.user.index', ['data' => $data]);
-
-        
-        // $data = User::join('employees', 'users.karyawan_nip', '=', 'nip_pgwi')
-        //     ->join('divisions', 'users.division_id', '=', 'divisions.id')
-        //     ->join('job_titles', 'users.job_title_id', '=', 'job_titles.id')
-        //     ->select('users.*', 'employees.nama', 'divisions.nama_divisi as division_id', 'job_titles.nama_jabatan as job_title_id')
-        //     ->get();
-
-        // return view('hr.user.index', ['data' => $data]);
-
-
-
-        // $existingUserIds = User::pluck('karyawan_nip')->toArray();
-
-        // $data = employee::whereNotIn('id', $existingUserIds)
-        // ->with('divisions', 'jobtitle')
-        // ->orderBy('division_id', 'asc')
-        // ->get();
-
-        // return view('hr.user.index', ['data' => $data]);
+    {        
+        $data = User::orderBy('karyawan_nip','asc')->get();
+        return view('hr.user.index')->with('data', $data);
     }
 
     /**
@@ -54,7 +24,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $employees = Employee::all();
+
+        return view('nama_tampilan', ['employees' => $employees]);
     }
 
     /**
@@ -63,20 +35,6 @@ class UserController extends Controller
     public function store(Request $request)
     {
        
-        $data = $request->all();
-        
-        $hashedPassword = bcrypt($data['password']);
-        $data = [
-            'karyawan_nip' => $request->get('karyawan_nip'),
-            'password' => $hashedPassword,
-            'division_id' => $request->division_id,
-            'job_title_id' => $request->job_title_id,
-            'is_leader' => 1,
-        ];
-        // dd($data);
-        User::create($data);
-
-        return redirect()->route('user.index');
     }
 
     /**

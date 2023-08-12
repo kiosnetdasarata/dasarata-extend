@@ -116,7 +116,7 @@ class EmployeeController extends Controller
         $employeeData = $request->all();
         $employeeData['nip_pgwi'] = $nipPgwi;
 
-        // dd($nipPgwi);
+        // dd($employeeData);
 
         Employee::create($employeeData);
 

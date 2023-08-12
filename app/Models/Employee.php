@@ -21,6 +21,7 @@ class Employee extends Model
         'nama',
         'nickname',
         'tgl_mulai_kerja',
+        'email',
         'no_tlpn',
         'branch_company_id',
         'nik',

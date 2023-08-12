@@ -11,12 +11,12 @@
                 <form name="createKomisi" action="{{ url('user') }}" method="POST">
                     @csrf
                     <div class="mb-6">
-                        <label for="karyawan_nip" class="block mb-2     text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
-                        <select id="karyawan_nip" name="karyawan_nip" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option selected>--Pilih Karyawan--</option>
-                            @foreach ($employees as $employee)
-                                <option value ="{{ $employee->nip_pgwi }}">{{ $employee->nama }}</option>
-                            @endforeach
+                        <label for="karyawan_nip"  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">karyawan_nip</label>
+                        <select id="karyawan_nip" name="karyawan_nip" class="form-select bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option selected>--Pilih Divisi--</option>
+                            @foreach ($employees as $item)
+                                <option value ="{{ $item->id }}">{{ $item->karyawan_nip }}</option>
+                                @endforeach
                         </select>
                     </div>
                     <div class="mb-6">
