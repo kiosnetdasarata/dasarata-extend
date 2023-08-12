@@ -9,15 +9,20 @@ use App\Models\User;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Carbon;
 
 class Employee extends Model
 {
     use HasFactory;
 
-    protected $connection = 'mysql2';
+    protected $connection = 'mysql';
     protected $fillable = [
+        'nip_pgwi',
         'nama',
+        'nickname',
+        'tgl_mulai_kerja',
         'no_tlpn',
+        'branch_company_id',
         'nik',
         'tempat_lahir',
         'tgl_lahir',
@@ -32,15 +37,10 @@ class Employee extends Model
         'pendidikan_terakhir',
         'nama_instansi',
         'tahun_lulus',
+        'status_level_id',
         'divisi_id',
         'jabatan_id'
     ];
-
-    // protected $casts =[
-    //     'jk'=>'enum',
-    //     'agama'=>'enum',
-    //     'status_perkawinan'=>'enum',
-    // ];
 
     public function divisions()
     {
@@ -50,6 +50,11 @@ class Employee extends Model
     {
         return $this->belongsTo(JobTitle::class, 'jabatan_id');
     }
+    public function status_level()
+    {
+        return $this->belongsTo(Status_level::class, 'status_level_id');
+    }
+
     public function user()
     {
         return $this->hasOne(User::class);

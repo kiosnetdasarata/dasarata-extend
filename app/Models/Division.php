@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Division extends Model
 {
     use HasFactory;
-    protected $connection = 'mysql2';
+    protected $connection = 'mysql';
     protected $fillable = [
         'nama_divisi',
         'divisions_id',

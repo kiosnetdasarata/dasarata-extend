@@ -11,6 +11,9 @@ use App\Models\Village;
 
 use App\Models\Division;
 use App\Models\JobTitle;
+use App\Models\Level;
+use App\Models\Status_level;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -34,11 +37,12 @@ class EmployeeController extends Controller
         $regencies = Regencie::all();
         $districts = District::all();
         $villages = Village::all();
+        $status_level = Status_level::all();
 
         $divisions = Division::all();
         $job_titles = JobTitle::all();
 
-        return view('hr.employee.create', compact('provinces','regencies','districts','villages','divisions','job_titles'));
+        return view('hr.employee.create', compact('provinces','regencies','districts','villages','divisions','job_titles','status_level'));
     }
 
     /**
@@ -97,14 +101,26 @@ class EmployeeController extends Controller
 
         // Employee::create($validateData);
 
+        $existingCount = Employee::count();
+        $nomorUrut = $existingCount + 1;
 
 
-        Employee::create($request->all());
+        $tglMulaiKerja = Carbon::createFromFormat('Y/m/d', $request->tgl_mulai_kerja);
+        $tahunMulaiKerja = $tglMulaiKerja->format('y');
+        $bulanMulaiKerja = $tglMulaiKerja->format('m');
 
-        return redirect()->route('employees.index')->with('berhasil','pegawai berhasil diinput');
+        $jenisKelamin = ($request->jk == 'Laki-Laki') ? '1' : '0';
 
+        $nipPgwi = $tahunMulaiKerja . $bulanMulaiKerja . $jenisKelamin . $nomorUrut ;
 
+        $employeeData = $request->all();
+        $employeeData['nip_pgwi'] = $nipPgwi;
 
+        // dd($nipPgwi);
+
+        Employee::create($employeeData);
+
+        return redirect()->route('employees.index')->with('berhasil', 'pegawai berhasil diinput');
     }
 
     /**

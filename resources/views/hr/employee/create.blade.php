@@ -18,6 +18,16 @@
             @enderror
         </div>
         <div class="mb-6">
+            <label for="nickname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nickname</label>
+            <input type="text" id="nickname" name="nickname" class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:focus:bg-gray-700  @error('nama') is-invalid
+            @enderror" value="{{ old('nickname') }}" placeholder="Nickname" autocomplete="off">
+            @error('nickname')
+            <div class="text-gray-900 invalid-feedback dark:text-white">
+                {{ $message }}
+            </div>
+            @enderror
+        </div>
+        <div class="mb-6">
             <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor Handphone</label>
             <input type="text" id="no_tlpn" name="no_tlpn" class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:focus:bg-gray-700  @error('no_tlpn') is-invalid
             @enderror" value="{{ old('no_tlpn') }}" placeholder="Nomor Handphone" autocomplete="off">
@@ -26,6 +36,18 @@
                 {{ $message }}
             </div>
             @enderror
+        </div>
+        <div>
+            <label for="tanggal_masuk_kerja" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Masuk Kerja</label>
+            <input id="tgl_mulai_kerja" datepicker datepicker-format="yyyy/mm/dd" type="text" name="tgl_mulai_kerja" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Pilih Tanggal" autocomplete="off">
+        </div>
+        <div class="mb-6">
+            <label for="branch_company_id"  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Company</label>
+            <select name="branch_company_id" id="branch_company_id" class="form-select bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option selected>--Pilih Company--</option>
+                <option value="1">Malang</option>
+                <option value="2">Pasuruan</option>
+            </select>
         </div>
         <div class="mb-6">
             <label for="nik" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIK</label>
@@ -163,6 +185,15 @@
                 <option selected>--Pilih Jabatan--</option>
                 @foreach ($job_titles as $item)
                     <option value ="{{ $item->id }}">{{ $item->nama_jabatan }}</option>
+                    @endforeach
+            </select>
+        </div>
+        <div class="mb-6">
+            <label for="level"  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Level</label>
+            <select id="status_level_id" name="status_level_id" class="form-select bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option selected>--Pilih Level--</option>
+                @foreach ($status_level as $item)
+                    <option value ="{{ $item->id }}">{{ $item->nama_level }}</option>
                     @endforeach
             </select>
         </div>

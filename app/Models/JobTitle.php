@@ -10,7 +10,7 @@ class JobTitle extends Model
 {
     use HasFactory;
 
-    protected $connection = 'mysql2';
+    protected $connection = 'mysql';
     protected $fillable = [
         'divisions_id',
         'nama_jabatan',
