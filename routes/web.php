@@ -126,4 +126,7 @@ Route::controller(EmployeeController::class)->group(function () {
 Route::get('/login', function(){
     return view('login.index');
 });
+Route::get('/sidebar', function(){
+    return view('partials.sidebar.sidebar-new');
+});
 
