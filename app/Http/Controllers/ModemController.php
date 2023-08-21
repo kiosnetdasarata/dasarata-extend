@@ -51,30 +51,23 @@ class ModemController extends Controller
     public function edit(string $id)
     {
         $modemType = ModemType::all();
-        $employee = Employee::all();
-
         $modem = Modem::find($id);
-        $date = Carbon::createFromFormat('Y-m-d', $modem->modem_masuk)->format('m/d/Y');
+        $date = Carbon::createFromFormat('Y-m-d H:i:s', $modem->created_at)->format('m/d/Y H:i:s');
         return view('warehouse.modem-list.update', [
             'modem' => $modem,
             'modemTypes' => $modemType,
-            'employees' => $employee,
             'date' => $date
         ]);
     }
     public function update(string $id, Request $request)
     {
-
-        $date = Carbon::createFromFormat('m/d/Y', $request->get('modem_masuk'))->format('Y-m-d');
-        $invoiceTemporary = mt_rand(1, 3); //invoice Sementara
+        $date = Carbon::createFromFormat('m/d/Y', $request->get('modem_in'))->format('Y-m-d');
         $validation = $request->validate([
             'type_id' => 'required',
             'sn_modem' => 'required',
-            'karyawan_nip' => 'required',
-            'tujuan_out' => 'required'
+            'vendor' => 'required'
         ]);
-        $validation['modem_masuk'] = $date;
-        $validation['invoices_id'] = $invoiceTemporary; 
+        $validation['created_at'] = $date;
 
         Modem::where('id', $id)->update($validation);
         return redirect()->route('warehouse.modem-list.index')->with('success', 'Data updated successfully');

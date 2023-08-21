@@ -141,7 +141,7 @@
                     </a>
                 </li>
                 <li
-                    class="flex items-center border-t border-hidden line w-full rounded-lg group [&.active]:bg-emerald-200 dark:text-white">
+                    class="flex items-center border-t border-hidden line w-full rounded-lg group [&.active]:bg-dasarataHover dark:text-white">
                     <span class="flex-1 text text-sm text-left text-gray-600 whitespace-nowrap">Warehouse</span>
                 </li>
                 <li>
@@ -220,7 +220,7 @@
         </div>
         <div class="absolute profile flex trans bg-dasarataSidebar items-center w-full h-16 bottom-0 left-0 border-t">
             <div class="text trans flex ml-3">
-                <img class="w-11 h-11 rounded-xl" src="/img/piggy.jpeg" alt="user photo">
+                <img class="w-11 h-11 rounded-xl" src="/img/piggy.jpg" alt="user photo">
                 <div class="w-24 flex-row my-auto ml-2 overflow-x-auto custom-scrollbar-hidden">
                     <h2 class="font-normal text-sm whitespace-nowrap">Ryan
                         Reynolds Pandiangan Hutabarat

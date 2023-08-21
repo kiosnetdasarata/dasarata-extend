@@ -80,7 +80,7 @@
                             {{ $data->tanggal_dibuat }}
                         </td>
                         <td class="px-6 py-4 font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $data->S_n_K }}
+                            {{ $data->s_n_k }}
                         </td>
                         <td class="px-6 py-4 flex font-normal whitespace-nowrap dark:text-white">
                             <a href="{{ url('marketing/promo-type/'. $data->id . '/edit') }}"
