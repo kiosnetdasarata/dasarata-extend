@@ -99,13 +99,13 @@
                             {{ $data->programtype->nama_type_program }}
                         </td>
                         <td class="px-6 py-4 font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $data->tanggal_mulai }}
+                            {{ $data->start_date }}
                         </td>
                         <td class="px-6 py-4 font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $data->tanggal_selesai }}
+                            {{ $data->end_date }}
                         </td>
                         <td class="px-6 py-4 font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $data->tanggal_selesai > date('Y-m-d') ? 'Active' : 'Inactive' }}
+                            {{ $data->end_date > date('Y-m-d') ? 'Active' : 'Inactive' }}
                         </td>
                         <td class="px-6 py-4 flex font-normal whitespace-nowrap dark:text-white">
                             <a href="{{ url('marketing/promo-active/'.$data->id.'/edit') }}"

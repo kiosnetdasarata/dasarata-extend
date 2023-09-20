@@ -22,7 +22,7 @@ class ProgramTypeController extends Controller
         $validation = $request->validate([
             'nama_type_program' => 'required|min:3|max:100',
             'nominal' => 'required',
-            'S_n_K' => 'required|min:3|max:255'
+            's_n_k' => 'required|min:3|max:255'
         ]);
         $validation['tanggal_dibuat'] = $date;
         // dd($validation);
@@ -41,8 +41,7 @@ class ProgramTypeController extends Controller
         $date = Carbon::createFromFormat('Y-m-d', $promoType->tanggal_dibuat)->format('m/d/Y');
         return view('marketing.promo-type.update', [
             'promoType' => $promoType,
-            'date' => $date,
-            'sidebar' => 'promo'
+            'date' => $date
         ]);
     }
     public function update(Request $request, string $id)

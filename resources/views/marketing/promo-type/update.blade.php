@@ -51,13 +51,13 @@
                         placeholder="Pilih Tanggal">
                 </div>
                 <div class="mb-6">
-                    <label for="S_n_K" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Syarat dan
+                    <label for="s_n_k" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Syarat dan
                         Ketentuan</label>
-                    <textarea id="S_n_K" rows="4" name="S_n_K"
-                        class="block p-2.5 mb-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('S_n_K') is-invalid
+                    <textarea id="s_n_k" rows="4" name="s_n_k"
+                        class="block p-2.5 mb-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('s_n_k') is-invalid
                         @enderror"
-                        placeholder="Syarat dan Ketentuan...">{{ old('S_n_K', $promoType->S_n_K) }}</textarea>
-                    @error('S_n_K')
+                        placeholder="Syarat dan Ketentuan...">{{ old('s_n_k', $promoType->s_n_k) }}</textarea>
+                    @error('s_n_k')
                         <div class="invalid-feedback text-red-600">
                             <small>{{ $message }}</small>
                         </div>

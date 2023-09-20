@@ -37,7 +37,7 @@
                             @enderror
                         </div>
                         <div class="relative max-w mb-6">
-                            <label for="tanggal_mulai"
+                            <label for="start_date"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal
                                 Mulai</label>
                             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -48,12 +48,12 @@
                                         clip-rule="evenodd"></path>
                                 </svg>
                             </div>
-                            <input name="tanggal_mulai" datepicker type="text" autocomplete="off" value="{{ old('tanggal_mulai') }}"
+                            <input name="start_date" datepicker type="text" autocomplete="off" value="{{ old('start_date') }}"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 "
                                 placeholder="Pilih Tanggal">
                         </div>
                         <div class="relative max-w mb-6">
-                            <label for="tanggal_selesai"
+                            <label for="end_date"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal
                                 Selesai</label>
                             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -64,7 +64,7 @@
                                         clip-rule="evenodd"></path>
                                 </svg>
                             </div>
-                            <input name="tanggal_selesai" datepicker type="text" autocomplete="off" value="{{ old('tanggal_selesai') }}"
+                            <input name="end_date" datepicker type="text" autocomplete="off" value="{{ old('end_date') }}"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 "
                                 placeholder="Pilih Tanggal">
                         </div>
